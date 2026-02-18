@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunrise Cafe - Home</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      background: #f0e6d3;
+      color: #333;
+    }
+
+    /* Ugly top bar */
+    .top-bar {
+      background: #8B4513;
+      color: #FFD700;
+      text-align: center;
+      padding: 6px;
+      font-size: 13px;
+      font-family: 'Comic Sans MS', cursive;
+      letter-spacing: 1px;
+    }
+
+    .top-bar marquee {
+      display: inline;
+    }
+
+    /* Bad header */
+    .header {
+      background: linear-gradient(to bottom, #3d1a00, #5c2a0a);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 4px solid #FFD700;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-family: 'Comic Sans MS', cursive;
+      font-size: 32px;
+      color: #FFD700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .logo span {
+      color: #FF6347;
+    }
+
+    .nav {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 12px;
+      font-size: 14px;
+      background: #8B4513;
+      border: 1px solid #FFD700;
+      border-radius: 3px;
+      font-family: Arial, sans-serif;
+    }
+
+    .nav a:hover {
+      background: #A0522D;
+    }
+
+    /* Hero disaster */
+    .hero {
+      background: #5c2a0a;
+      text-align: center;
+      padding: 30px 20px;
+      position: relative;
+    }
+
+    .hero-img {
+      width: 100%;
+      max-width: 700px;
+      height: 300px;
+      background: linear-gradient(135deg, #8B6914 0%, #A0522D 50%, #6B3410 100%);
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+      opacity: 0.7;
+      border: 3px solid #FFD700;
+    }
+
+    .hero h1 {
+      font-family: 'Comic Sans MS', cursive;
+      font-size: 36px;
+      color: #FFD700;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #ddd;
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .blink {
+      animation: blink 1s step-end infinite;
+      color: #FF6347;
+      font-weight: bold;
+      font-size: 20px;
+      display: block;
+      margin-top: 10px;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* Content mess */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .section-title {
+      font-family: 'Comic Sans MS', cursive;
+      color: #8B4513;
+      font-size: 24px;
+      text-align: center;
+      margin: 20px 0 10px;
+      border-bottom: 2px dashed #8B4513;
+      padding-bottom: 8px;
+    }
+
+    /* Cluttered info section */
+    .info-boxes {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .info-box {
+      flex: 1;
+      min-width: 200px;
+      background: #fff;
+      border: 2px solid #8B4513;
+      padding: 12px;
+      text-align: center;
+      border-radius: 5px;
+    }
+
+    .info-box h3 {
+      color: #8B4513;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .info-box p {
+      font-size: 13px;
+      line-height: 1.4;
+      color: #555;
+    }
+
+    /* Ugly menu table */
+    .menu-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 14px;
+    }
+
+    .menu-table th {
+      background: #8B4513;
+      color: #FFD700;
+      padding: 8px;
+      text-align: left;
+      font-family: Arial, sans-serif;
+    }
+
+    .menu-table td {
+      padding: 8px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .menu-table tr:nth-child(even) {
+      background: #f5e6d0;
+    }
+
+    .menu-table .price {
+      color: #8B4513;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    /* Bad testimonial */
+    .testimonial {
+      background: #fff;
+      border: 2px solid #FFD700;
+      border-radius: 5px;
+      padding: 15px;
+      margin: 15px 0;
+      font-style: italic;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .testimonial .name {
+      font-style: normal;
+      font-weight: bold;
+      color: #8B4513;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    .stars {
+      color: #FFD700;
+      font-size: 18px;
+    }
+
+    /* Counter widget */
+    .visitor-counter {
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      color: #888;
+      font-family: 'Courier New', monospace;
+    }
+
+    .visitor-counter img {
+      width: 120px;
+      height: 20px;
+      background: #333;
+      display: inline-block;
+    }
+
+    /* Footer */
+    .footer {
+      background: #3d1a00;
+      color: #ccc;
+      text-align: center;
+      padding: 15px;
+      font-size: 12px;
+      border-top: 4px solid #FFD700;
+    }
+
+    .footer a {
+      color: #FFD700;
+    }
+
+    .social-icons {
+      margin: 8px 0;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background: #8B4513;
+      border-radius: 50%;
+      margin: 0 3px;
+      line-height: 30px;
+      color: #FFD700;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    /* GIF placeholder */
+    .gif-divider {
+      text-align: center;
+      padding: 5px;
+    }
+
+    .gif-divider div {
+      height: 8px;
+      background: repeating-linear-gradient(90deg, #8B4513 0px, #8B4513 10px, #FFD700 10px, #FFD700 20px);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* Hours box */
+    .hours-box {
+      background: #fff;
+      border: 3px double #8B4513;
+      padding: 15px;
+      text-align: center;
+      margin: 15px auto;
+      max-width: 350px;
+      font-size: 14px;
+    }
+
+    .hours-box h3 {
+      color: #8B4513;
+      margin-bottom: 8px;
+      font-family: 'Comic Sans MS', cursive;
+    }
+
+    .hours-box p {
+      margin: 3px 0;
+      color: #555;
+    }
+
+    /* Map placeholder */
+    .map-placeholder {
+      width: 100%;
+      height: 200px;
+      background: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 14px;
+      border: 2px solid #8B4513;
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">*** NOW SERVING BREAKFAST ALL DAY *** CALL US (619) 555-0134 *** FREE WIFI ***</div>
+
+  <header class="header">
+    <div class="logo">Sunrise <span>Cafe</span></div>
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#">Menu</a>
+      <a href="#">About Us</a>
+      <a href="#">Specials</a>
+      <a href="#">Catering</a>
+      <a href="#">Gallery</a>
+      <a href="#">Reviews</a>
+      <a href="#">Contact</a>
+      <a href="#">Order Online</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-img">[Low-quality photo of coffee cup — 2.4MB unoptimized JPEG]</div>
+    <h1>Welcome to Sunrise Cafe!!</h1>
+    <p>The BEST coffee and breakfast in North Park, San Diego since 2009! Come visit us today!</p>
+    <span class="blink">*** GRAND RE-OPENING SPECIAL - 10% OFF!! ***</span>
+  </section>
+
+  <div class="gif-divider"><div></div></div>
+
+  <div class="content">
+
+    <h2 class="section-title">Why Choose Us?</h2>
+
+    <div class="info-boxes">
+      <div class="info-box">
+        <h3>FRESH INGREDIENTS</h3>
+        <p>We use only the freshest locally sourced ingredients in all our dishes every single day!!</p>
+      </div>
+      <div class="info-box">
+        <h3>FREE WIFI</h3>
+        <p>Enjoy complimentary high-speed wifi while you dine with us. Password: sunrise2024</p>
+      </div>
+      <div class="info-box">
+        <h3>OUTDOOR SEATING</h3>
+        <p>Beautiful patio available for outdoor dining. Dogs welcome on the patio area!</p>
+      </div>
+    </div>
+
+    <div class="gif-divider"><div></div></div>
+
+    <h2 class="section-title">Our Popular Menu Items</h2>
+
+    <table class="menu-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Description</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Sunrise Breakfast</strong></td>
+          <td>2 eggs, bacon, toast, hash browns</td>
+          <td class="price">$12.99</td>
+        </tr>
+        <tr>
+          <td><strong>Avocado Toast</strong></td>
+          <td>Sourdough, smashed avo, everything seasoning</td>
+          <td class="price">$10.99</td>
+        </tr>
+        <tr>
+          <td><strong>Acai Bowl</strong></td>
+          <td>Acai blend, granola, banana, berries</td>
+          <td class="price">$13.99</td>
+        </tr>
+        <tr>
+          <td><strong>Latte</strong></td>
+          <td>House-made with oat milk option (+$0.75)</td>
+          <td class="price">$5.50</td>
+        </tr>
+        <tr>
+          <td><strong>Cold Brew</strong></td>
+          <td>24-hour steeped, served on ice</td>
+          <td class="price">$4.75</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="text-align:center; font-size: 13px; color: #888;">Click <a href="#" style="color: #8B4513;">HERE</a> to download our full menu (PDF - 4.2MB)</p>
+
+    <div class="gif-divider"><div></div></div>
+
+    <h2 class="section-title">What Our Customers Say</h2>
+
+    <div class="testimonial">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      "Best breakfast in North Park! The avocado toast is amazing and the staff is super friendly. We come here every weekend!"
+      <div class="name">- Sarah M., Google Reviews</div>
+    </div>
+
+    <div class="testimonial">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+      "Great coffee and cozy atmosphere. The patio is perfect for working on my laptop. Wifi could be faster though."
+      <div class="name">- Mike T., Yelp</div>
+    </div>
+
+    <div class="gif-divider"><div></div></div>
+
+    <div class="hours-box">
+      <h3>Hours of Operation</h3>
+      <p><strong>Monday - Friday:</strong> 6:30 AM - 3:00 PM</p>
+      <p><strong>Saturday - Sunday:</strong> 7:00 AM - 4:00 PM</p>
+      <p><strong>Holidays:</strong> Closed</p>
+      <p style="margin-top: 8px; font-size: 12px; color: #888;">* Hours may vary, please call to confirm</p>
+    </div>
+
+    <h2 class="section-title">Find Us</h2>
+
+    <div class="map-placeholder">[Google Maps Embed - Loading...]</div>
+    <p style="text-align: center; font-size: 14px;">
+      <strong>Sunrise Cafe</strong><br>
+      3045 University Ave, San Diego, CA 92104<br>
+      Phone: (619) 555-0134 | Email: info@sunrisecafe.com
+    </p>
+
+    <div class="visitor-counter">
+      You are visitor #<span style="background: #333; color: #0f0; padding: 2px 6px; font-family: monospace;">004,523</span>
+      <br>
+      <span style="font-size: 10px;">Site last updated: March 2019</span>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="social-icons">
+      <a href="#">f</a>
+      <a href="#">in</a>
+      <a href="#">y</a>
+    </div>
+    <p>&copy; 2019 Sunrise Cafe. All Rights Reserved. | <a href="#">Privacy Policy</a> | Built with GoDaddy Website Builder</p>
+  </footer>
+
+</body>
+</html>

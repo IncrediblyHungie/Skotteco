@@ -1,0 +1,16 @@
+{
+  "name": "Skotte",
+  "short_name": "Skotte",
+  "description": "Web rebranding studio in San Diego",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0A0A0F",
+  "theme_color": "#4F7FFF",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

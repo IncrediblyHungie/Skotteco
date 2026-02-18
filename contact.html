@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Skotte | Book a Discovery Call</title>
+  <meta name="description" content="Book a free 30-minute discovery call or send us a message. Skotte — web rebranding studio in San Diego.">
+  <link rel="canonical" href="https://skotte.co/contact.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contact Us — Skotte | Book a Discovery Call">
+  <meta property="og:description" content="Book a free 30-minute discovery call or send us a message. Skotte — web rebranding studio in San Diego.">
+  <meta property="og:url" content="https://skotte.co/contact.html">
+  <meta property="og:site_name" content="Skotte">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://skotte.co/img/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Us — Skotte | Book a Discovery Call">
+  <meta name="twitter:description" content="Book a free 30-minute discovery call or send us a message. Skotte — web rebranding studio in San Diego.">
+  <meta name="twitter:image" content="https://skotte.co/img/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/main.js" defer></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Skotte",
+    "description": "Web rebranding studio in San Diego. Custom websites and professional photography, launched in five days.",
+    "url": "https://skotte.co",
+    "email": "hello@skotte.co",
+    "areaServed": "San Diego, CA",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Diego",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "hello@skotte.co",
+      "contactType": "customer service",
+      "areaServed": "San Diego",
+      "availableLanguage": ["English"]
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="nav scrolled" id="nav">
+    <div class="nav-inner container">
+      <a href="/" class="logo">SKOTTE</a>
+      <div class="nav-links">
+        <a href="/work.html" class="nav-link">Work</a>
+        <a href="/services.html" class="nav-link">Services</a>
+        <a href="/about.html" class="nav-link">About</a>
+        <a href="/contact.html" class="nav-link btn btn-primary btn-sm active">Let's Talk</a>
+      </div>
+      <span class="nav-clock" id="navClock"></span>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <nav>
+      <a href="/work.html" class="mobile-menu-link">Work</a>
+      <a href="/services.html" class="mobile-menu-link">Services</a>
+      <a href="/about.html" class="mobile-menu-link">About</a>
+      <a href="/contact.html" class="mobile-menu-link btn btn-primary active" style="margin-top: var(--space-6); width: 100%;">Let's Talk</a>
+    </nav>
+  </div>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <main>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <span class="section-label">(let's talk)</span>
+        <h1 class="section-title">Book Your Free Discovery Call</h1>
+        <p class="section-subtitle">30 minutes. No pressure. We'll look at your current site together and show you what's possible.</p>
+      </div>
+    </section>
+
+    <!-- Contact Grid -->
+    <section class="section reveal">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Left: Calendly -->
+          <div>
+            <h2 style="font-family: var(--font-display); font-size: var(--text-2xl); margin-bottom: var(--space-4);">Pick a Time</h2>
+            <p style="color: var(--text-light); margin-bottom: var(--space-8);">15 minutes, no pressure.</p>
+            <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border);">
+              <div class="calendly-inline-widget" data-url="https://calendly.com/skotte/discovery" style="min-width:320px;height:700px;"></div>
+              <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            </div>
+          </div>
+
+          <!-- Right: Contact Form -->
+          <div>
+            <h2 style="font-family: var(--font-display); font-size: var(--text-2xl); margin-bottom: var(--space-4);">Send a Message</h2>
+            <p style="color: var(--text-light); margin-bottom: var(--space-8);">We'll get back to you within 24 hours.</p>
+
+            <form id="contactForm" action="https://formspree.io/f/placeholder" method="POST">
+              <div class="form-group">
+                <label for="name" class="form-label">Name <span>*</span></label>
+                <input type="text" id="name" name="name" class="form-input" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">Email <span>*</span></label>
+                <input type="email" id="email" name="email" class="form-input" required autocomplete="email">
+              </div>
+              <div class="form-group">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" id="phone" name="phone" class="form-input" autocomplete="tel">
+              </div>
+              <div class="form-group">
+                <label for="business" class="form-label">Business Name</label>
+                <input type="text" id="business" name="business" class="form-input" autocomplete="organization">
+              </div>
+              <div class="form-group">
+                <label for="website" class="form-label">Current Website URL</label>
+                <input type="url" id="website" name="website" class="form-input" placeholder="https://yourbusiness.com" autocomplete="url">
+              </div>
+              <div class="form-group">
+                <label for="message" class="form-label">Tell us about your business <span>*</span></label>
+                <textarea id="message" name="message" class="form-textarea" required placeholder="What does your business do? What are you looking for?"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg w-full">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="section reveal">
+      <div class="container">
+        <div class="contact-info-grid">
+          <div>
+            <h3 class="contact-info-label">Email</h3>
+            <a href="mailto:hello@skotte.co" class="contact-info-value">hello@skotte.co</a>
+          </div>
+          <div>
+            <h3 class="contact-info-label">Location</h3>
+            <p class="contact-info-value">San Diego, California</p>
+          </div>
+          <div>
+            <h3 class="contact-info-label">Response Time</h3>
+            <p class="contact-info-value">Within 24 hours</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo">SKOTTE</a>
+          <p class="footer-tagline">Web rebranding studio in San Diego. Custom websites + professional photography, launched in five days.</p>
+          <p class="footer-values">1% of every project supports local animal rescue.</p>
+        </div>
+        <div>
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-list">
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Contact</h3>
+          <ul class="footer-list">
+            <li><a href="mailto:hello@skotte.co">hello@skotte.co</a></li>
+            <li>San Diego, CA</li>
+          </ul>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Skotte. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

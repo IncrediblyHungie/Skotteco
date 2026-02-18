@@ -1,0 +1,36 @@
+# Skotte.co - robots.txt
+# Allow search engines and AI assistants, block training-only crawlers
+
+User-agent: *
+Allow: /
+
+Sitemap: https://skotte.co/sitemap.xml
+
+# AI Discovery
+# See /llms.txt for AI-readable site information
+
+# Allow AI assistants
+User-agent: GPTBot
+Disallow:
+
+User-agent: anthropic-ai
+Disallow:
+
+User-agent: Claude-Web
+Disallow:
+
+# Block training-only crawlers
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: img2dataset
+Disallow: /

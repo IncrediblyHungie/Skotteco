@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pacific Dental Group - San Diego Dentist</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    /* Top info bar */
+    .top-bar {
+      background: #1a5276;
+      color: #fff;
+      padding: 8px 20px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+
+    .top-bar a { color: #7ec8e3; text-decoration: none; }
+
+    /* Header */
+    .header {
+      background: #fff;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #2e86c1;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: #2e86c1;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo-text h1 {
+      font-size: 22px;
+      color: #1a5276;
+      margin: 0;
+    }
+
+    .logo-text p {
+      font-size: 11px;
+      color: #7f8c8d;
+      margin: 0;
+    }
+
+    .nav {
+      display: flex;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: #1a5276;
+      text-decoration: none;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-left: 1px solid #ddd;
+      transition: background 0.2s;
+    }
+
+    .nav a:first-child { border-left: none; }
+    .nav a:hover { background: #eaf2f8; }
+
+    .nav .emergency {
+      background: #e74c3c;
+      color: #fff;
+      border-radius: 3px;
+      border: none;
+      margin-left: 5px;
+    }
+
+    .nav .emergency:hover { background: #c0392b; }
+
+    /* Slider area */
+    .slider {
+      background: linear-gradient(135deg, #1a5276 0%, #2e86c1 50%, #3498db 100%);
+      padding: 40px 20px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+
+    .slider h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .slider p {
+      font-size: 16px;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .slider .cta-btn {
+      display: inline-block;
+      background: #27ae60;
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      text-transform: uppercase;
+      border: 2px solid #fff;
+    }
+
+    .slider .cta-btn:hover { background: #219a52; }
+
+    /* Insurance banner */
+    .insurance-banner {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #856404;
+    }
+
+    .insurance-banner strong { color: #e74c3c; }
+
+    /* Content */
+    .content {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .two-col {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .col-main {
+      flex: 2;
+      min-width: 300px;
+    }
+
+    .col-side {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .section-title {
+      color: #1a5276;
+      font-size: 20px;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #2e86c1;
+    }
+
+    .welcome-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    /* Service boxes */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .service-box {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .service-box .icon {
+      width: 50px;
+      height: 50px;
+      background: #eaf2f8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+      color: #2e86c1;
+      font-size: 20px;
+    }
+
+    .service-box h4 {
+      font-size: 13px;
+      color: #1a5276;
+      margin-bottom: 4px;
+    }
+
+    .service-box p {
+      font-size: 11px;
+      color: #888;
+    }
+
+    /* Sidebar widgets */
+    .widget {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .widget h3 {
+      font-size: 15px;
+      color: #1a5276;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .widget p, .widget li {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .widget ul {
+      padding-left: 18px;
+    }
+
+    .widget ul li {
+      margin-bottom: 5px;
+    }
+
+    /* Schedule button */
+    .schedule-btn {
+      display: block;
+      background: #27ae60;
+      color: #fff;
+      text-align: center;
+      padding: 12px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .schedule-btn:hover { background: #219a52; }
+
+    /* Insurance logos placeholder */
+    .insurance-logos {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .insurance-logo {
+      width: 70px;
+      height: 35px;
+      background: #eee;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: #999;
+    }
+
+    /* Team section */
+    .team-grid {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 15px 0;
+    }
+
+    .team-member {
+      text-align: center;
+      flex: 1;
+      min-width: 140px;
+    }
+
+    .team-photo {
+      width: 100px;
+      height: 100px;
+      background: #ddd;
+      border-radius: 50%;
+      margin: 0 auto 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #999;
+      border: 3px solid #2e86c1;
+    }
+
+    .team-member h4 {
+      font-size: 13px;
+      color: #1a5276;
+    }
+
+    .team-member p {
+      font-size: 11px;
+      color: #888;
+    }
+
+    /* Reviews */
+    .review {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .review .stars { color: #f1c40f; font-size: 14px; }
+    .review p { font-size: 13px; color: #555; margin-top: 5px; }
+    .review .author { font-size: 11px; color: #999; margin-top: 5px; }
+
+    /* Map */
+    .map-placeholder {
+      width: 100%;
+      height: 200px;
+      background: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 14px;
+      margin: 15px 0;
+      border: 1px solid #ccc;
+    }
+
+    /* Footer */
+    .footer {
+      background: #1a5276;
+      color: #adc5d6;
+      padding: 20px;
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer a { color: #7ec8e3; text-decoration: none; }
+    .footer h4 { color: #fff; font-size: 13px; margin-bottom: 8px; }
+    .footer ul { list-style: none; }
+    .footer li { margin-bottom: 4px; }
+
+    .footer-bottom {
+      max-width: 960px;
+      margin: 15px auto 0;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      font-size: 11px;
+    }
+
+    /* Cookie popup */
+    .cookie-popup {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #333;
+      color: #fff;
+      padding: 12px 20px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .cookie-popup button {
+      background: #27ae60;
+      color: #fff;
+      border: none;
+      padding: 6px 16px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <span>Mon-Fri: 8AM-6PM | Sat: 9AM-2PM | <a href="tel:6195550198">(619) 555-0198</a></span>
+    <span><a href="#">Patient Portal Login</a> | <a href="#">Pay My Bill</a> | <a href="#">Forms</a></span>
+  </div>
+
+  <header class="header">
+    <div class="logo-area">
+      <div class="logo-icon">P</div>
+      <div class="logo-text">
+        <h1>Pacific Dental Group</h1>
+        <p>General & Cosmetic Dentistry | San Diego, CA</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Services</a>
+      <a href="#">Patient Info</a>
+      <a href="#">Insurance</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+      <a href="#" class="emergency">EMERGENCY</a>
+    </nav>
+  </header>
+
+  <section class="slider">
+    <h2>Your Smile, Our Passion</h2>
+    <p>Accepting new patients! Experience compassionate dental care in La Jolla.</p>
+    <a href="#" class="cta-btn">Schedule Your Appointment Today!</a>
+  </section>
+
+  <div class="insurance-banner">
+    <strong>NEW PATIENT SPECIAL:</strong> Exam, X-Rays & Cleaning — Only $99! (Reg. $350) | We accept most PPO insurance plans. <a href="#" style="color: #856404; text-decoration: underline;">See accepted plans &rarr;</a>
+  </div>
+
+  <div class="content">
+    <div class="two-col">
+      <div class="col-main">
+        <h2 class="section-title">Welcome to Pacific Dental Group</h2>
+        <p class="welcome-text">
+          Welcome to Pacific Dental Group! We are a family-owned dental practice serving the La Jolla and greater San Diego community for over 15 years. Our team of experienced dentists and hygienists provide comprehensive dental care in a comfortable, modern office environment. We offer a full range of services including preventive care, cosmetic dentistry, restorative procedures, and emergency dental services.
+        </p>
+        <p class="welcome-text">
+          At Pacific Dental Group, we believe that every patient deserves personalized attention and the highest quality care. Whether you need a routine cleaning or a complete smile makeover, our dedicated team is here to help you achieve your dental health goals. We use the latest technology and techniques to ensure your comfort and satisfaction.
+        </p>
+
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+          <div class="service-box">
+            <div class="icon">&#128065;</div>
+            <h4>General Dentistry</h4>
+            <p>Exams, cleanings, fillings</p>
+          </div>
+          <div class="service-box">
+            <div class="icon">&#10024;</div>
+            <h4>Cosmetic Dentistry</h4>
+            <p>Veneers, whitening, bonding</p>
+          </div>
+          <div class="service-box">
+            <div class="icon">&#129463;</div>
+            <h4>Implants</h4>
+            <p>Single, bridge, All-on-4</p>
+          </div>
+          <div class="service-box">
+            <div class="icon">&#128170;</div>
+            <h4>Orthodontics</h4>
+            <p>Invisalign, braces</p>
+          </div>
+          <div class="service-box">
+            <div class="icon">&#128166;</div>
+            <h4>Teeth Whitening</h4>
+            <p>In-office, take-home</p>
+          </div>
+          <div class="service-box">
+            <div class="icon">&#9888;</div>
+            <h4>Emergency Care</h4>
+            <p>Same-day appointments</p>
+          </div>
+        </div>
+
+        <h2 class="section-title">Meet Our Doctors</h2>
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="team-photo">[Photo]</div>
+            <h4>Dr. James Chen, DDS</h4>
+            <p>General & Cosmetic</p>
+          </div>
+          <div class="team-member">
+            <div class="team-photo">[Photo]</div>
+            <h4>Dr. Maria Santos, DMD</h4>
+            <p>Orthodontics</p>
+          </div>
+          <div class="team-member">
+            <div class="team-photo">[Photo]</div>
+            <h4>Dr. Kevin Park, DDS</h4>
+            <p>Implant Specialist</p>
+          </div>
+        </div>
+
+        <h2 class="section-title">Patient Reviews</h2>
+        <div class="review">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Dr. Chen is the best dentist I've ever had. The whole staff is so friendly and professional. Highly recommend!"</p>
+          <div class="author">- Linda R., Google Reviews</div>
+        </div>
+        <div class="review">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Had an emergency toothache and they got me in the same day. Fixed everything and the pain was gone immediately."</p>
+          <div class="author">- David M., Yelp</div>
+        </div>
+      </div>
+
+      <div class="col-side">
+        <div class="widget">
+          <h3>Book an Appointment</h3>
+          <p>Call us today or fill out our online form to schedule your visit.</p>
+          <br>
+          <a href="#" class="schedule-btn">REQUEST APPOINTMENT</a>
+        </div>
+
+        <div class="widget">
+          <h3>Office Hours</h3>
+          <p>Monday: 8:00 AM - 6:00 PM</p>
+          <p>Tuesday: 8:00 AM - 6:00 PM</p>
+          <p>Wednesday: 8:00 AM - 6:00 PM</p>
+          <p>Thursday: 8:00 AM - 6:00 PM</p>
+          <p>Friday: 8:00 AM - 5:00 PM</p>
+          <p>Saturday: 9:00 AM - 2:00 PM</p>
+          <p>Sunday: Closed</p>
+        </div>
+
+        <div class="widget">
+          <h3>Accepted Insurance</h3>
+          <div class="insurance-logos">
+            <div class="insurance-logo">Delta</div>
+            <div class="insurance-logo">Cigna</div>
+            <div class="insurance-logo">Aetna</div>
+            <div class="insurance-logo">MetLife</div>
+            <div class="insurance-logo">Guardian</div>
+            <div class="insurance-logo">United</div>
+          </div>
+          <br>
+          <p style="font-size: 11px; text-align: center;">Don't see yours? <a href="#" style="color: #2e86c1;">Call to verify</a></p>
+        </div>
+
+        <div class="widget">
+          <h3>Patient Resources</h3>
+          <ul>
+            <li><a href="#" style="color: #2e86c1;">New Patient Forms (PDF)</a></li>
+            <li><a href="#" style="color: #2e86c1;">Financial Options</a></li>
+            <li><a href="#" style="color: #2e86c1;">Insurance FAQ</a></li>
+            <li><a href="#" style="color: #2e86c1;">Post-Op Instructions</a></li>
+            <li><a href="#" style="color: #2e86c1;">HIPAA Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="widget">
+          <h3>Find Us</h3>
+          <div class="map-placeholder">[Google Maps]</div>
+          <p style="margin-top: 8px;">7855 Ivanhoe Ave, Suite 200<br>La Jolla, CA 92037<br><a href="tel:6195550198" style="color: #2e86c1;">(619) 555-0198</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <h4>Pacific Dental Group</h4>
+        <p>7855 Ivanhoe Ave, Suite 200<br>La Jolla, CA 92037<br>(619) 555-0198</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">General Dentistry</a></li>
+          <li><a href="#">Cosmetic Dentistry</a></li>
+          <li><a href="#">Dental Implants</a></li>
+          <li><a href="#">Orthodontics</a></li>
+          <li><a href="#">Emergency Care</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Patient Forms</a></li>
+          <li><a href="#">Insurance</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2021 Pacific Dental Group. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Sitemap</a> | Website by SD Web Solutions</p>
+    </div>
+  </footer>
+
+  <div class="cookie-popup">
+    <span>This website uses cookies to ensure you get the best experience. <a href="#" style="color: #7ec8e3;">Learn more</a></span>
+    <button>Accept</button>
+  </div>
+
+</body>
+</html>

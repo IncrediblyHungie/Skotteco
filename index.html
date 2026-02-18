@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skotte — Web Rebranding Studio in San Diego | Custom Websites + Photography</title>
+  <meta name="description" content="San Diego's only web rebranding studio with in-house photography. Custom-coded websites, professional photos, launched in 5 days. Starting at $3,500.">
+  <link rel="canonical" href="https://skotte.co/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Skotte — Web Rebranding Studio in San Diego | Custom Websites + Photography">
+  <meta property="og:description" content="San Diego's only web rebranding studio with in-house photography. Custom-coded websites, professional photos, launched in 5 days. Starting at $3,500.">
+  <meta property="og:url" content="https://skotte.co/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Skotte">
+  <meta property="og:image" content="https://skotte.co/img/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Skotte — Web Rebranding Studio in San Diego | Custom Websites + Photography">
+  <meta name="twitter:description" content="San Diego's only web rebranding studio with in-house photography. Custom-coded websites, professional photos, launched in 5 days. Starting at $3,500.">
+  <meta name="twitter:image" content="https://skotte.co/img/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- JSON-LD: ProfessionalService -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Skotte",
+    "url": "https://skotte.co/",
+    "image": "https://skotte.co/img/og-image.jpg",
+    "description": "San Diego's only web rebranding studio with in-house photography. Custom-coded websites, professional photos, launched in 5 days. Starting at $3,500.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Diego",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "email": "hello@skotte.co",
+    "priceRange": "$$",
+    "areaServed": {
+      "@type": "City",
+      "name": "San Diego"
+    },
+    "serviceType": ["Web Design", "Web Development", "Brand Photography", "Web Rebranding"]
+  }
+  </script>
+
+  <script src="js/main.js" defer></script>
+  <script src="js/font-tester.js" defer></script> <!-- TEMP: remove after choosing fonts -->
+</head>
+<body class="home">
+
+  <!-- Header -->
+  <header class="nav" id="nav">
+    <div class="nav-inner container">
+      <a href="/" class="logo">SKOTTE</a>
+      <div class="nav-links">
+        <a href="/work.html" class="nav-link">Work</a>
+        <a href="/services.html" class="nav-link">Services</a>
+        <a href="/about.html" class="nav-link">About</a>
+        <a href="/contact.html" class="nav-link btn btn-primary btn-sm">Let's Talk</a>
+      </div>
+      <span class="nav-clock" id="navClock"></span>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav>
+      <a href="/work.html" class="mobile-menu-link">Work</a>
+      <a href="/services.html" class="mobile-menu-link">Services</a>
+      <a href="/about.html" class="mobile-menu-link">About</a>
+      <a href="/contact.html" class="mobile-menu-link btn btn-primary" style="margin-top: var(--space-6); width: 100%;">Let's Talk</a>
+    </nav>
+  </div>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <main>
+
+    <!-- Section 1: Hero -->
+    <section class="hero" id="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="video/hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+      <img src="video/overlay.avif" class="hero-img-overlay" alt="">
+      <h1 class="hero-headline">We build websites<br>and take the photos.</h1>
+      <p class="hero-sub">A husband-and-wife studio in San Diego. Custom code, real photography, five days.</p>
+      <div class="hero-cta">
+        <a href="/contact.html" class="btn btn-primary btn-lg">Let's talk</a>
+      </div>
+    </section>
+
+    <!-- Section 2: How It Works -->
+    <section class="section reveal" id="process">
+      <div class="container">
+        <span class="section-label">(how it works)</span>
+        <h2 class="section-title">Two sides of the same coin.</h2>
+
+        <div class="coin-split mt-10">
+          <div class="coin-side">
+            <h3 class="coin-heading">She photographs<br>your business.</h3>
+            <p class="coin-desc">Khrystyna comes to your location and captures everything — your space, your team, your products. Real images with a European editorial eye. No stock photos, no AI. This is what makes your site feel like you.</p>
+            <div class="coin-person">
+              <div class="coin-avatar"></div>
+              <div>
+                <span class="coin-name">Khrystyna</span>
+                <span class="coin-role">Photographer</span>
+              </div>
+            </div>
+          </div>
+          <div class="coin-divider"></div>
+          <div class="coin-side">
+            <h3 class="coin-heading">He codes the site<br>around it.</h3>
+            <p class="coin-desc">Peter hand-codes every site from scratch — no templates, no page builders. Custom code built around your photography, your brand, your story. The two come together into something neither could be alone.</p>
+            <div class="coin-person">
+              <div class="coin-avatar"></div>
+              <div>
+                <span class="coin-name">Peter</span>
+                <span class="coin-role">Developer &amp; Strategist</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-grid reveal-group mt-10">
+          <div class="process-step">
+            <span class="step-number">01</span>
+            <h3 class="step-title">Discovery</h3>
+            <p class="step-desc">A 30-minute call where we get to know your business inside and out. We learn what makes you different, who your customers are, and what you need your website to do. You get a custom proposal the same day.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-number">02</span>
+            <h3 class="step-title">Photo Shoot</h3>
+            <p class="step-desc">Khrystyna comes to your location and photographs everything — your space, your team, your products. Real images with a European editorial eye. No stock photos, no AI-generated filler. This is what sets your site apart.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-number">03</span>
+            <h3 class="step-title">Design And Build</h3>
+            <p class="step-desc">While the photos come together, Peter hand-codes your site from scratch. No templates, no page builders. Custom code built around your photography, your brand, your story. The two come together into something neither could be alone.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-number">04</span>
+            <h3 class="step-title">Launch</h3>
+            <p class="step-desc">Your new site goes live in five days. 95+ PageSpeed score, real photography, fast on every device. Ready for customers from day one.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Recent Work -->
+    <section class="section reveal" id="work" style="padding-top: var(--space-12);">
+      <div class="container">
+        <span class="section-label">(recent work)</span>
+        <h2 class="section-title">See what we build.</h2>
+
+        <div class="work-showcase mt-10 reveal-group">
+          <a href="/examples/cafe-after.html" class="work-card">
+            <div class="work-card-preview">
+              <iframe src="/examples/cafe-after.html" class="work-card-iframe" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+            </div>
+            <h3 class="work-card-title">Sunrise Cafe</h3>
+            <p class="work-card-desc">A neighborhood coffee shop that needed a site as warm as their lattes.</p>
+            <span class="work-card-link">View the site <span aria-hidden="true">&rarr;</span></span>
+          </a>
+          <a href="/examples/dentist-after.html" class="work-card">
+            <div class="work-card-preview">
+              <iframe src="/examples/dentist-after.html" class="work-card-iframe" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+            </div>
+            <h3 class="work-card-title">Pacific Dental Group</h3>
+            <p class="work-card-desc">A dental practice that wanted to look as professional online as they are in person.</p>
+            <span class="work-card-link">View the site <span aria-hidden="true">&rarr;</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Meet the Team -->
+    <section class="section reveal" id="team">
+      <div class="container">
+        <span class="section-label">(the team)</span>
+
+        <div class="team-preview mt-10">
+          <div class="team-photo">
+            <img src="/img/team.jpg" alt="Peter and Khrystyna — Skotte" loading="lazy">
+          </div>
+          <div class="team-text">
+            <p>Peter builds every site by hand — no templates, no WordPress, no shortcuts. Khrystyna photographs every business in person — no stock photos, no AI images, no compromises.</p>
+            <p>Together, we relaunch San Diego businesses in five days.</p>
+            <a href="/about.html" class="team-link">More about us <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <div class="closing-line reveal">
+      <p>If this feels like a fit, <a href="/contact.html">let's talk</a>.</p>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo">SKOTTE</a>
+          <p class="footer-tagline">Web rebranding studio in San Diego. Custom websites + professional photography, launched in five days.</p>
+          <p class="footer-values">1% of every project supports local animal rescue.</p>
+        </div>
+        <div>
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-list">
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Contact</h3>
+          <ul class="footer-list">
+            <li><a href="mailto:hello@skotte.co">hello@skotte.co</a></li>
+            <li>San Diego, CA</li>
+          </ul>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Skotte. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+# Skotte — Web Rebranding Studio
+
+> San Diego's only web rebranding studio with in-house photography.
+
+## About
+Skotte is a husband-and-wife web rebranding studio based in San Diego, California. We combine custom-coded websites with professional brand photography to deliver complete business relaunches in 5 days.
+
+## Team
+- Peter Skotte — Web Developer (custom HTML/CSS/JS, SEO, performance)
+- Khrystyna Skotte — Photographer & Designer (brand photography, visual direction)
+
+## Services
+- **Complete Web Relaunch** — Starting at $3,500
+  - Custom-coded website (no templates or WordPress)
+  - Professional brand photography session
+  - Mobile-responsive design
+  - SEO optimization and structured data
+  - 95+ PageSpeed Insights score
+  - 5-day turnaround
+
+- **Monthly Retainers** (optional)
+  - Maintenance: $299/mo
+  - Growth: $599/mo
+  - Full Service: $999/mo
+
+## Contact
+- Website: https://skotte.co
+- Email: hello@skotte.co
+- Location: San Diego, California
+- Booking: https://skotte.co/contact.html
+
+## Pages
+- Home: https://skotte.co/
+- Services: https://skotte.co/services.html
+- Work: https://skotte.co/work.html
+- About: https://skotte.co/about.html
+- Contact: https://skotte.co/contact.html
