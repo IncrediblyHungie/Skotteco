@@ -218,23 +218,80 @@
     });
   }
 
+  // Tier card accordions
+  function initTierAccordions() {
+    var toggles = document.querySelectorAll('.tier-toggle');
+    toggles.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var details = this.nextElementSibling;
+        if (expanded) {
+          this.setAttribute('aria-expanded', 'false');
+          details.style.maxHeight = '0';
+        } else {
+          this.setAttribute('aria-expanded', 'true');
+          details.style.maxHeight = details.scrollHeight + 'px';
+        }
+      });
+    });
+  }
+
   function initClock() {
     var clock = document.getElementById('navClock');
     if (!clock) return;
 
-    function update() {
+    var weatherText = '';
+
+    function updateTime() {
       var now = new Date();
       var time = now.toLocaleTimeString('en-US', {
         timeZone: 'America/Los_Angeles',
         hour: 'numeric',
         minute: '2-digit',
+        second: '2-digit',
         hour12: true
       });
-      clock.textContent = time + ' San Diego';
+      clock.textContent = time + (weatherText ? ' · ' + weatherText : '') + ' — San Diego';
     }
 
-    update();
-    setInterval(update, 1000);
+    function fetchWeather() {
+      // Open-Meteo: San Diego coords, no API key needed
+      var url = 'https://api.open-meteo.com/v1/forecast?latitude=32.7157&longitude=-117.1611&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America/Los_Angeles';
+      fetch(url)
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var temp = Math.round(data.current.temperature_2m);
+          var code = data.current.weather_code;
+          // WMO weather codes: 0=clear, 1=mainly clear, 2=partly cloudy, 3=overcast
+          // 45-48=fog, 51-67=rain/drizzle, 71-77=snow, 80-82=showers, 95-99=thunderstorm
+          var isNice = code <= 1 && temp >= 70;
+          var condition;
+          if (isNice) {
+            condition = temp + '°F ☀️ Go To The Beach';
+          } else if (code <= 1) {
+            condition = temp + '°F ☀️ Clear';
+          } else if (code <= 3) {
+            condition = temp + '°F ⛅ Cloudy';
+          } else if (code <= 48) {
+            condition = temp + '°F 🌫️ Foggy';
+          } else if (code <= 67) {
+            condition = temp + '°F 🌧️ Rainy';
+          } else if (code <= 77) {
+            condition = temp + '°F ❄️ Snow';
+          } else if (code <= 82) {
+            condition = temp + '°F 🌦️ Showers';
+          } else {
+            condition = temp + '°F ⛈️ Stormy';
+          }
+          weatherText = condition;
+        })
+        .catch(function() { weatherText = ''; });
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+    fetchWeather();
+    setInterval(fetchWeather, 900000); // every 15 min
   }
 
   // Init
@@ -261,6 +318,7 @@
     initFaqAccordion();
     initContactForm();
     initSmoothScroll();
+    initTierAccordions();
     initClock();
   }
 
