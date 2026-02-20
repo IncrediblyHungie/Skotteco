@@ -13,7 +13,8 @@ Converts cold-email traffic into discovery call bookings.
 - 5 HTML pages: index, work, services, about, contact
 - 5 CSS files: variables, reset, layout, components, responsive
 - 1 JS file: main.js (all interactivity)
-- Dark theme (`#0A0A0F` base, `#4F7FFF` accent)
+- Dark Espresso theme (`#1A1612` base, `#C4A265` accent)
+- Fonts: Fraunces (display) + Source Sans 3 (body)
 
 ## Key Files
 - `css/variables.css` — Design tokens (dark theme)
@@ -26,6 +27,9 @@ Converts cold-email traffic into discovery call bookings.
 ```bash
 # Local preview
 python -m http.server 8000
+
+# Deploy to Cloudflare Pages
+CLOUDFLARE_API_TOKEN=Kx1oHbAaS65zQg4cvAH3pf1KMRU8Z8bbJchaOjm2 npx wrangler pages deploy . --project-name=skotteco --commit-dirty=true
 
 # Check file sizes
 wc -c css/*.css js/*.js

@@ -3,785 +3,1471 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pacific Dental — Modern Dentistry in La Jolla, San Diego</title>
+  <title>Pacific Dental Group — Modern Dentistry in La Jolla, San Diego</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     :root {
-      --bg: #FAFBFD;
-      --bg-alt: #F0F4F8;
-      --card: #FFFFFF;
-      --text: #334155;
-      --text-muted: #64748B;
-      --heading: #0F172A;
-      --accent: #2563EB;
-      --accent-hover: #1D4ED8;
-      --accent-light: rgba(37, 99, 235, 0.08);
-      --success: #059669;
-      --border: #E2E8F0;
-      --radius: 12px;
-      --shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.06);
-      --shadow-lg: 0 10px 30px rgba(15, 23, 42, 0.08);
-      --font: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-      --transition: 300ms cubic-bezier(0.22, 1, 0.36, 1);
+      --white: #F8FAFB;
+      --navy: #0C1B33;
+      --navy-light: #162847;
+      --teal: #1B8A8A;
+      --teal-light: #23A8A8;
+      --teal-glow: rgba(27, 138, 138, 0.12);
+      --beige: #F5EEDC;
+      --beige-muted: #EDE5D0;
+      --blue-soft: #D4E4F7;
+      --blue-pale: #E8F0FA;
+      --text-primary: #1A2A3A;
+      --text-secondary: #5A6B7C;
+      --text-light: #8A97A6;
+      --border: rgba(12, 27, 51, 0.08);
+      --card-bg: #FFFFFF;
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --ease: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
     }
 
     body {
       font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
+      background: var(--white);
+      color: var(--text-primary);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
-    /* Header */
+    /* ========== HEADER ========== */
     .header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      height: 72px;
-      background: rgba(250, 251, 253, 0.95);
-      backdrop-filter: blur(12px);
+      z-index: 1000;
+      height: 76px;
+      background: rgba(248, 250, 251, 0.88);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
       border-bottom: 1px solid var(--border);
-      z-index: 100;
-      display: flex;
-      align-items: center;
+      transition: box-shadow 0.4s var(--ease);
     }
 
-    .header-inner {
-      width: 100%;
-      max-width: 1100px;
+    .header:hover {
+      box-shadow: 0 1px 24px rgba(12, 27, 51, 0.06);
+    }
+
+    .header__inner {
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 32px;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .logo {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--heading);
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
-
-    .logo span { color: var(--accent); }
-
-    .nav { display: flex; align-items: center; gap: 28px; }
-
-    .nav a {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color var(--transition);
-    }
-
-    .nav a:hover { color: var(--heading); }
-
-    .nav .btn {
-      background: var(--accent);
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all var(--transition);
-    }
-
-    .nav .btn:hover {
-      background: var(--accent-hover);
-      color: #fff;
-      transform: translateY(-1px);
-    }
-
-    /* Hero */
-    .hero {
-      padding-top: 72px;
-      min-height: 90vh;
+    .header__brand {
       display: flex;
       align-items: center;
-    }
-
-    .hero-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 80px 24px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      background: var(--accent-light);
-      border: 1px solid rgba(37, 99, 235, 0.15);
-      border-radius: 50px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      color: var(--heading);
-      margin-bottom: 20px;
-    }
-
-    .hero h1 span { color: var(--accent); }
-
-    .hero-text {
-      font-size: 18px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 32px;
-      max-width: 440px;
-    }
-
-    .hero-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent);
-      color: #fff;
-      padding: 14px 28px;
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: 600;
+      gap: 10px;
       text-decoration: none;
-      transition: all var(--transition);
-      border: none;
-      cursor: pointer;
     }
 
-    .btn-primary:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.25);
-    }
-
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--heading);
-      padding: 14px 28px;
+    .header__logo-mark {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--teal) 0%, #148080 100%);
       border-radius: 10px;
-      font-size: 15px;
-      font-weight: 600;
-      text-decoration: none;
-      border: 2px solid var(--border);
-      transition: all var(--transition);
-    }
-
-    .btn-outline:hover { border-color: var(--heading); }
-
-    .hero-image {
-      width: 100%;
-      height: 500px;
-      background: linear-gradient(145deg, #C7D2FE 0%, #A5B4FC 40%, #818CF8 100%);
-      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #4338CA;
-      font-size: 14px;
-      box-shadow: var(--shadow-lg);
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      box-shadow: 0 2px 8px rgba(27, 138, 138, 0.3);
     }
 
-    .hero-trust {
+    .header__name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.3px;
+    }
+
+    .header__name em {
+      font-style: normal;
+      color: var(--teal);
+      font-weight: 600;
+    }
+
+    .nav {
       display: flex;
-      gap: 24px;
-      margin-top: 24px;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav__link {
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.25s var(--ease);
+      position: relative;
+    }
+
+    .nav__link:hover {
+      color: var(--navy);
+      background: rgba(12, 27, 51, 0.04);
+    }
+
+    .nav__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 10px;
+      padding: 10px 22px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: all 0.3s var(--ease);
+      box-shadow: 0 2px 8px rgba(12, 27, 51, 0.15);
+    }
+
+    .nav__cta:hover {
+      background: var(--navy-light);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(12, 27, 51, 0.2);
+    }
+
+    /* Mobile nav toggle */
+    .nav__toggle {
+      display: none;
+      background: none;
+      border: none;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      position: relative;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+
+    .nav__toggle:hover {
+      background: rgba(12, 27, 51, 0.04);
+    }
+
+    .nav__toggle span,
+    .nav__toggle span::before,
+    .nav__toggle span::after {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      position: absolute;
+      left: 10px;
+      transition: all 0.3s var(--ease);
+    }
+
+    .nav__toggle span { top: 19px; }
+    .nav__toggle span::before { content: ''; top: -6px; }
+    .nav__toggle span::after { content: ''; top: 6px; }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding-top: 76px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(168deg, var(--white) 0%, var(--blue-pale) 40%, var(--blue-soft) 70%, #C8DBF0 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(27, 138, 138, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(245, 238, 220, 0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 32px 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero__pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px 7px 10px;
+      background: rgba(27, 138, 138, 0.08);
+      border: 1px solid rgba(27, 138, 138, 0.15);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: 28px;
+    }
+
+    .hero__pill-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--teal);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero__title {
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+
+    .hero__title-accent {
+      background: linear-gradient(135deg, var(--teal) 0%, #148080 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero__subtitle {
+      font-size: 19px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      max-width: 460px;
+      margin-bottom: 36px;
+    }
+
+    .hero__actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
       flex-wrap: wrap;
     }
 
-    .trust-item {
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font);
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+      border-radius: 12px;
+    }
+
+    .btn--primary {
+      padding: 15px 30px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 15.5px;
+      box-shadow: 0 2px 12px rgba(27, 138, 138, 0.25), 0 1px 3px rgba(27, 138, 138, 0.15);
+    }
+
+    .btn--primary:hover {
+      background: var(--teal-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(27, 138, 138, 0.3), 0 2px 6px rgba(27, 138, 138, 0.2);
+    }
+
+    .btn--secondary {
+      padding: 15px 30px;
+      background: var(--card-bg);
+      color: var(--navy);
+      font-size: 15.5px;
+      border: 1.5px solid rgba(12, 27, 51, 0.12);
+      box-shadow: 0 1px 4px rgba(12, 27, 51, 0.05);
+    }
+
+    .btn--secondary:hover {
+      border-color: rgba(12, 27, 51, 0.25);
+      box-shadow: 0 3px 12px rgba(12, 27, 51, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .hero__visual {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero__image-frame {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      max-height: 520px;
+      border-radius: 24px;
+      background: linear-gradient(160deg, #DDE8F4 0%, #B8D0EA 30%, #8BB5D9 60%, #6BA3CE 100%);
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 20px 60px rgba(12, 27, 51, 0.1),
+        0 8px 24px rgba(12, 27, 51, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    .hero__image-frame::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 30% 40%, rgba(255, 255, 255, 0.2) 0%, transparent 100%),
+        radial-gradient(ellipse 40% 40% at 70% 70%, rgba(27, 138, 138, 0.08) 0%, transparent 100%);
+    }
+
+    .hero__image-label {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-radius: 14px;
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .trust-check {
-      color: var(--success);
-      font-weight: bold;
-    }
-
-    /* Section */
-    .section { padding: 80px 24px; }
-    .section-alt { background: var(--bg-alt); }
-    .container { max-width: 1100px; margin: 0 auto; }
-    .text-center { text-align: center; }
-
-    .section-label {
-      font-size: 13px;
+      gap: 12px;
+      font-size: 13.5px;
+      color: var(--navy);
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      margin-bottom: 12px;
-      display: block;
+      box-shadow: 0 4px 20px rgba(12, 27, 51, 0.08);
     }
 
-    .section-title {
-      font-size: 36px;
-      font-weight: 800;
-      color: var(--heading);
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      margin-bottom: 12px;
-    }
-
-    .section-subtitle {
-      font-size: 17px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      max-width: 500px;
-    }
-
-    .text-center .section-subtitle { margin: 0 auto; }
-
-    /* Stats */
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-
-    .stat {
-      text-align: center;
-      padding: 24px;
-      background: var(--card);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-    }
-
-    .stat-value {
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-
-    .stat-label {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    /* Services */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-
-    .service-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px;
-      transition: all var(--transition);
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(37, 99, 235, 0.2);
-    }
-
-    .service-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--accent-light);
+    .hero__image-label-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--teal) 0%, #148080 100%);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
-      font-size: 22px;
-    }
-
-    .service-card h3 {
+      color: white;
       font-size: 18px;
-      font-weight: 700;
-      color: var(--heading);
-      margin-bottom: 8px;
+      flex-shrink: 0;
     }
 
-    .service-card p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.7;
+    .hero__image-label small {
+      display: block;
+      font-size: 12px;
+      color: var(--text-light);
+      font-weight: 400;
+      margin-top: 2px;
     }
 
-    /* Team */
-    .team-grid {
+    /* ========== TRUST BAR ========== */
+    .trust {
+      position: relative;
+      z-index: 10;
+      margin-top: -52px;
+      padding: 0 32px;
+    }
+
+    .trust__inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 36px 48px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 32px;
-      margin-top: 48px;
+      box-shadow:
+        0 12px 40px rgba(12, 27, 51, 0.06),
+        0 4px 12px rgba(12, 27, 51, 0.04);
+      border: 1px solid rgba(12, 27, 51, 0.04);
     }
 
-    .team-card { text-align: center; }
-
-    .team-photo {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #CBD5E1 0%, #94A3B8 100%);
-      margin: 0 auto 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #64748B;
-      font-size: 13px;
-      border: 4px solid var(--card);
-      box-shadow: var(--shadow);
+    .trust__item {
+      text-align: center;
+      position: relative;
     }
 
-    .team-card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--heading);
-      margin-bottom: 4px;
+    .trust__item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 40px;
+      background: var(--border);
     }
 
-    .team-card .role {
-      font-size: 14px;
-      color: var(--accent);
+    .trust__value {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .trust__value span {
+      color: var(--teal);
+    }
+
+    .trust__label {
+      font-size: 13.5px;
+      color: var(--text-light);
       font-weight: 500;
+      margin-top: 4px;
     }
 
-    .team-card .bio {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-top: 8px;
-      line-height: 1.6;
+    /* ========== SECTIONS (shared) ========== */
+    .section {
+      padding: 100px 32px;
     }
 
-    /* Testimonials */
-    .testimonials-grid {
+    .section--beige {
+      background: var(--beige);
+    }
+
+    .section--navy {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .section--soft {
+      background: linear-gradient(180deg, var(--white) 0%, var(--blue-pale) 100%);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section__header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 60px;
+    }
+
+    .section__eyebrow {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--teal);
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .section__eyebrow::before,
+    .section__eyebrow::after {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--teal);
+      vertical-align: middle;
+      opacity: 0.4;
+    }
+
+    .section__eyebrow::before { margin-right: 12px; }
+    .section__eyebrow::after { margin-left: 12px; }
+
+    .section__title {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    .section--navy .section__title { color: #fff; }
+
+    .section__desc {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .section--navy .section__desc { color: rgba(255, 255, 255, 0.6); }
+
+    /* ========== SERVICES ========== */
+    .services__grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-
-    .testimonial {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-    }
-
-    .testimonial-stars {
-      color: #F59E0B;
-      font-size: 16px;
-      margin-bottom: 12px;
-      letter-spacing: 2px;
-    }
-
-    .testimonial blockquote {
-      font-size: 15px;
-      color: var(--text);
-      line-height: 1.7;
-      font-style: italic;
-      margin-bottom: 16px;
-    }
-
-    .testimonial-author { font-size: 14px; font-weight: 600; color: var(--heading); }
-    .testimonial-source { font-size: 12px; color: var(--text-muted); }
-
-    /* CTA */
-    .cta-section {
-      background: var(--heading);
-      color: #fff;
-      padding: 80px 24px;
-      text-align: center;
-    }
-
-    .cta-section h2 {
-      font-size: 36px;
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-
-    .cta-section p {
-      font-size: 17px;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 32px;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .cta-section .btn-primary {
-      background: #fff;
-      color: var(--heading);
-      font-size: 16px;
-      padding: 16px 32px;
-    }
-
-    .cta-section .btn-primary:hover {
-      background: var(--bg-alt);
-      box-shadow: 0 4px 20px rgba(255,255,255,0.2);
-    }
-
-    /* Contact Grid */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: start;
-      margin-top: 48px;
-    }
-
-    .contact-info {
-      display: flex;
-      flex-direction: column;
       gap: 20px;
     }
 
-    .contact-item h3 {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--heading);
-      margin-bottom: 4px;
+    .service-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 36px 30px 32px;
+      border: 1px solid rgba(12, 27, 51, 0.05);
+      transition: all 0.4s var(--ease);
+      position: relative;
+      overflow: hidden;
     }
 
-    .contact-item p {
-      font-size: 14px;
-      color: var(--text-muted);
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), transparent);
+      opacity: 0;
+      transition: opacity 0.4s var(--ease);
     }
 
-    .contact-item a {
-      color: var(--accent);
-      text-decoration: none;
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        0 16px 48px rgba(12, 27, 51, 0.07),
+        0 6px 16px rgba(12, 27, 51, 0.04);
+      border-color: rgba(27, 138, 138, 0.12);
     }
 
-    .map-placeholder {
-      width: 100%;
-      height: 350px;
-      background: linear-gradient(145deg, #E2E8F0 0%, #CBD5E1 100%);
-      border-radius: var(--radius);
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-card__icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-muted);
-      font-size: 14px;
+      font-size: 24px;
+      margin-bottom: 22px;
+      transition: transform 0.3s var(--ease);
     }
 
-    /* Insurance */
-    .insurance-logos {
+    .service-card:hover .service-card__icon {
+      transform: scale(1.08);
+    }
+
+    .service-card__icon--teal {
+      background: var(--teal-glow);
+    }
+
+    .service-card__icon--beige {
+      background: rgba(245, 238, 220, 0.7);
+    }
+
+    .service-card__icon--blue {
+      background: rgba(212, 228, 247, 0.5);
+    }
+
+    .service-card__title {
+      font-size: 17.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .service-card__desc {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ========== TEAM ========== */
+    .team__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .team-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px 32px 36px;
+      text-align: center;
+      border: 1px solid rgba(12, 27, 51, 0.05);
+      transition: all 0.4s var(--ease);
+    }
+
+    .team-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(12, 27, 51, 0.07);
+    }
+
+    .team-card__photo {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      margin: 0 auto 24px;
+      position: relative;
+    }
+
+    .team-card__photo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .team-card__photo::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid rgba(27, 138, 138, 0.15);
+    }
+
+    .team-card:nth-child(1) .team-card__photo-inner {
+      background: linear-gradient(145deg, #B8D4E8 0%, #7AADCE 50%, #5B94BA 100%);
+    }
+
+    .team-card:nth-child(2) .team-card__photo-inner {
+      background: linear-gradient(145deg, #C8D8C0 0%, #8FB882 50%, #6FA065 100%);
+    }
+
+    .team-card:nth-child(3) .team-card__photo-inner {
+      background: linear-gradient(145deg, #D4C8B8 0%, #B8A088 50%, #9A856E 100%);
+    }
+
+    .team-card__name {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .team-card__title {
+      font-size: 14px;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .team-card__bio {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ========== INSURANCE ========== */
+    .insurance__grid {
       display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .insurance__badge {
+      padding: 14px 28px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(12, 27, 51, 0.06);
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all 0.3s var(--ease);
+      backdrop-filter: blur(8px);
+    }
+
+    .insurance__badge:hover {
+      background: var(--card-bg);
+      border-color: var(--teal);
+      color: var(--navy);
+      box-shadow: 0 4px 16px rgba(27, 138, 138, 0.08);
+    }
+
+    .insurance__note {
+      text-align: center;
+      font-size: 14.5px;
+      color: var(--text-secondary);
+    }
+
+    .insurance__note a {
+      color: var(--teal);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(27, 138, 138, 0.3);
+      transition: border-color 0.2s;
+    }
+
+    .insurance__note a:hover {
+      border-color: var(--teal);
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 36px 32px;
+      border: 1px solid rgba(12, 27, 51, 0.05);
+      transition: all 0.4s var(--ease);
+      position: relative;
+    }
+
+    .testimonial-card:hover {
+      box-shadow: 0 12px 40px rgba(12, 27, 51, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .testimonial-card__stars {
+      color: #E8A838;
+      font-size: 15px;
+      letter-spacing: 3px;
+      margin-bottom: 18px;
+    }
+
+    .testimonial-card__quote {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+      font-style: italic;
+      position: relative;
+    }
+
+    .testimonial-card__quote::before {
+      content: '\201C';
+      position: absolute;
+      top: -14px;
+      left: -6px;
+      font-size: 48px;
+      color: var(--teal);
+      opacity: 0.15;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .testimonial-card__author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-card__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-soft) 0%, #A8C4E0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+
+    .testimonial-card__name {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .testimonial-card__source {
+      font-size: 12.5px;
+      color: var(--text-light);
+    }
+
+    /* ========== CTA ========== */
+    .cta {
+      text-align: center;
+    }
+
+    .cta__inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 72px 48px;
+      background: linear-gradient(135deg, var(--navy) 0%, #1A3052 40%, #1E3A5C 100%);
+      border-radius: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta__inner::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(27, 138, 138, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta__inner::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(245, 238, 220, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta__title {
+      font-size: 38px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta__desc {
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 36px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       gap: 16px;
       flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 32px;
+      position: relative;
+      z-index: 1;
     }
 
-    .insurance-logo {
-      padding: 12px 24px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
+    .btn--cta-primary {
+      padding: 16px 36px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(27, 138, 138, 0.3);
+    }
+
+    .btn--cta-primary:hover {
+      background: var(--teal-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(27, 138, 138, 0.35);
+    }
+
+    .btn--cta-outline {
+      padding: 16px 36px;
+      background: transparent;
+      color: #fff;
+      font-size: 16px;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border-radius: 12px;
+    }
+
+    .btn--cta-outline:hover {
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: var(--navy);
+      color: rgba(255, 255, 255, 0.55);
+      padding: 64px 32px 0;
+    }
+
+    .footer__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+      gap: 48px;
+      padding-bottom: 48px;
+    }
+
+    .footer__brand-name {
+      font-size: 19px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      letter-spacing: -0.3px;
+    }
+
+    .footer__brand-name em {
+      font-style: normal;
+      color: var(--teal);
+      font-weight: 600;
+    }
+
+    .footer__brand-desc {
+      font-size: 14.5px;
+      line-height: 1.65;
+      max-width: 280px;
+    }
+
+    .footer__heading {
       font-size: 13px;
-      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 20px;
+    }
+
+    .footer__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer__list a {
+      font-size: 14.5px;
+      color: rgba(255, 255, 255, 0.55);
+      text-decoration: none;
+      transition: color 0.25s var(--ease);
+    }
+
+    .footer__list a:hover {
+      color: #fff;
+    }
+
+    .footer__hours-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer__hours-row:last-child {
+      border-bottom: none;
+    }
+
+    .footer__hours-day {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .footer__hours-time {
+      color: rgba(255, 255, 255, 0.75);
       font-weight: 500;
     }
 
-    /* Footer */
-    .footer {
-      background: var(--heading);
-      color: rgba(255,255,255,0.6);
-      padding: 48px 24px;
-    }
-
-    .footer-inner {
-      max-width: 1100px;
+    .footer__bottom {
+      max-width: 1200px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 48px;
-    }
-
-    .footer-logo { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 12px; }
-    .footer-logo span { color: var(--accent); }
-    .footer p { font-size: 14px; line-height: 1.6; }
-    .footer h4 { color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em; }
-    .footer ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .footer a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color var(--transition); }
-    .footer a:hover { color: #fff; }
-
-    .footer-bottom {
-      max-width: 1100px;
-      margin: 32px auto 0;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      text-align: center;
+      padding: 24px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       font-size: 13px;
     }
 
+    .footer__bottom a {
+      color: rgba(255, 255, 255, 0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer__bottom a:hover {
+      color: #fff;
+    }
+
+    .footer__credit {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .footer__credit a {
+      color: var(--teal);
+      font-weight: 500;
+    }
+
+    .footer__credit a:hover {
+      color: var(--teal-light);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .hero__inner {
+        gap: 48px;
+      }
+
+      .hero__title {
+        font-size: 44px;
+      }
+
+      .services__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer__inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
     @media (max-width: 768px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 36px; }
-      .hero-image { height: 300px; }
-      .services-grid, .team-grid, .testimonials-grid, .stats-bar { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr; }
-      .nav { display: none; }
+      .nav {
+        display: none;
+      }
+
+      .nav__toggle {
+        display: block;
+      }
+
+      .header__inner {
+        padding: 0 20px;
+      }
+
+      .section {
+        padding: 72px 20px;
+      }
+
+      .hero__inner {
+        grid-template-columns: 1fr;
+        padding: 52px 20px 80px;
+        gap: 40px;
+      }
+
+      .hero__title {
+        font-size: 38px;
+      }
+
+      .hero__subtitle {
+        font-size: 17px;
+      }
+
+      .hero__visual {
+        order: -1;
+      }
+
+      .hero__image-frame {
+        max-height: 320px;
+        aspect-ratio: 16 / 10;
+      }
+
+      .trust {
+        padding: 0 20px;
+        margin-top: -36px;
+      }
+
+      .trust__inner {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 28px 24px;
+        gap: 24px;
+      }
+
+      .trust__item:nth-child(2)::after {
+        display: none;
+      }
+
+      .trust__item::after {
+        display: none;
+      }
+
+      .services__grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .service-card {
+        padding: 28px 24px;
+      }
+
+      .team__grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .testimonials__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section__title {
+        font-size: 30px;
+      }
+
+      .cta__inner {
+        padding: 48px 28px;
+        border-radius: 20px;
+      }
+
+      .cta__title {
+        font-size: 28px;
+      }
+
+      .cta__actions {
+        flex-direction: column;
+      }
+
+      .footer__inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer__bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .hero__actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .insurance__badge {
+        padding: 12px 20px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero__title {
+        font-size: 32px;
+      }
+
+      .trust__inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        padding: 24px 20px;
+      }
+
+      .trust__value {
+        font-size: 26px;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- ========== HEADER ========== -->
   <header class="header">
-    <div class="header-inner">
-      <a href="#" class="logo">Pacific Dental<span>.</span></a>
+    <div class="header__inner">
+      <a href="#" class="header__brand">
+        <div class="header__logo-mark">P</div>
+        <span class="header__name">Pacific Dental <em>Group</em></span>
+      </a>
       <nav class="nav">
-        <a href="#">Services</a>
-        <a href="#">Our Team</a>
-        <a href="#">Reviews</a>
-        <a href="#">Insurance</a>
-        <a href="#" class="btn">Book Appointment</a>
+        <a href="#services" class="nav__link">Services</a>
+        <a href="#team" class="nav__link">Team</a>
+        <a href="#insurance" class="nav__link">Insurance</a>
+        <a href="#book" class="nav__cta">Book Appointment</a>
       </nav>
+      <button class="nav__toggle" aria-label="Menu">
+        <span></span>
+      </button>
     </div>
   </header>
 
+  <!-- ========== HERO ========== -->
   <section class="hero">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-badge">Now Accepting New Patients</div>
-        <h1>Dentistry that puts <span>you</span> first.</h1>
-        <p class="hero-text">Modern, comfortable care for your whole family. From routine cleanings to complete smile makeovers — all under one roof in La Jolla.</p>
-        <div class="hero-actions">
-          <a href="#" class="btn-primary">Book Appointment</a>
-          <a href="tel:6195550198" class="btn-outline">(619) 555-0198</a>
+    <div class="hero__inner">
+      <div class="hero__content">
+        <div class="hero__pill">
+          <span class="hero__pill-dot"></span>
+          Accepting new patients
         </div>
-        <div class="hero-trust">
-          <span class="trust-item"><span class="trust-check">&#10003;</span> Same-day emergency care</span>
-          <span class="trust-item"><span class="trust-check">&#10003;</span> Most PPO accepted</span>
-          <span class="trust-item"><span class="trust-check">&#10003;</span> 15+ years in La Jolla</span>
-        </div>
-      </div>
-      <div class="hero-image">[Professional photo: Modern dental suite with natural light]</div>
-    </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="container">
-      <div class="stats-bar">
-        <div class="stat">
-          <div class="stat-value">4.9</div>
-          <div class="stat-label">Google Rating</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">500+</div>
-          <div class="stat-label">5-Star Reviews</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">15+</div>
-          <div class="stat-label">Years in Practice</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">3</div>
-          <div class="stat-label">Specialist Doctors</div>
+        <h1 class="hero__title">
+          Dentistry that<br>puts <span class="hero__title-accent">you first.</span>
+        </h1>
+        <p class="hero__subtitle">
+          Advanced techniques, genuine warmth, and a space designed around your comfort. Modern dental care for every member of your family.
+        </p>
+        <div class="hero__actions">
+          <a href="#book" class="btn btn--primary">Book Your Visit</a>
+          <a href="tel:8585550147" class="btn btn--secondary">(858) 555-0147</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container text-center">
-      <span class="section-label">Services</span>
-      <h2 class="section-title">Comprehensive Dental Care</h2>
-      <p class="section-subtitle">Everything from routine cleanings to advanced restorative work, all in one practice.</p>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">&#128065;</div>
-          <h3>General Dentistry</h3>
-          <p>Comprehensive exams, professional cleanings, fillings, and preventive care to keep your smile healthy.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">&#10024;</div>
-          <h3>Cosmetic Dentistry</h3>
-          <p>Porcelain veneers, bonding, and smile design. Transform your confidence with a smile you love.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">&#129463;</div>
-          <h3>Dental Implants</h3>
-          <p>Single implants, bridges, and full-arch All-on-4 solutions. Permanent results that look and feel natural.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">&#128170;</div>
-          <h3>Invisalign</h3>
-          <p>Clear aligner therapy for teens and adults. Straighten your teeth without traditional braces.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">&#128166;</div>
-          <h3>Teeth Whitening</h3>
-          <p>Professional in-office whitening and custom take-home kits. Noticeably brighter in one visit.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">&#9888;</div>
-          <h3>Emergency Care</h3>
-          <p>Toothache? Broken tooth? We offer same-day emergency appointments. Call us anytime.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="container text-center">
-      <span class="section-label">Our Team</span>
-      <h2 class="section-title">Meet Your Doctors</h2>
-      <p class="section-subtitle">Experienced specialists who genuinely care about your comfort.</p>
-      <div class="team-grid">
-        <div class="team-card">
-          <div class="team-photo">[Professional headshot]</div>
-          <h3>Dr. James Chen, DDS</h3>
-          <span class="role">General & Cosmetic Dentistry</span>
-          <p class="bio">UCSD School of Dentistry. 18 years of experience. Passionate about minimally invasive techniques.</p>
-        </div>
-        <div class="team-card">
-          <div class="team-photo">[Professional headshot]</div>
-          <h3>Dr. Maria Santos, DMD</h3>
-          <span class="role">Orthodontics & Invisalign</span>
-          <p class="bio">Board-certified orthodontist. Invisalign Diamond Provider. Loves helping patients find their confidence.</p>
-        </div>
-        <div class="team-card">
-          <div class="team-photo">[Professional headshot]</div>
-          <h3>Dr. Kevin Park, DDS</h3>
-          <span class="role">Implant & Restorative Specialist</span>
-          <p class="bio">Fellowship-trained in implantology. Over 2,000 implants placed. Focused on long-term outcomes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container text-center">
-      <span class="section-label">Reviews</span>
-      <h2 class="section-title">What Our Patients Say</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>"Dr. Chen is the best dentist I've ever had. The whole team is warm, professional, and never rushes you."</blockquote>
-          <div class="testimonial-author">Linda R.</div>
-          <div class="testimonial-source">Google Reviews</div>
-        </div>
-        <div class="testimonial">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>"Had an emergency toothache on a Saturday. They got me in within the hour and fixed everything. Incredible."</blockquote>
-          <div class="testimonial-author">David M.</div>
-          <div class="testimonial-source">Yelp</div>
-        </div>
-        <div class="testimonial">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>"My kids used to be terrified of the dentist. Dr. Santos made them actually excited to come back. That's a miracle."</blockquote>
-          <div class="testimonial-author">Amy K.</div>
-          <div class="testimonial-source">Google Reviews</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="container text-center">
-      <span class="section-label">Insurance</span>
-      <h2 class="section-title">We Accept Most Plans</h2>
-      <p class="section-subtitle">In-network with major PPO providers. No insurance? We offer flexible payment plans.</p>
-      <div class="insurance-logos">
-        <div class="insurance-logo">Delta Dental</div>
-        <div class="insurance-logo">Cigna</div>
-        <div class="insurance-logo">Aetna</div>
-        <div class="insurance-logo">MetLife</div>
-        <div class="insurance-logo">Guardian</div>
-        <div class="insurance-logo">United Healthcare</div>
-      </div>
-      <p style="margin-top: 20px; font-size: 14px; color: var(--text-muted);">Don't see your plan? <a href="tel:6195550198" style="color: var(--accent); text-decoration: none; font-weight: 500;">Call us to verify</a></p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="text-center">
-        <span class="section-label">Location</span>
-        <h2 class="section-title">Visit Our Office</h2>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-item">
-            <h3>Address</h3>
-            <p>7855 Ivanhoe Ave, Suite 200<br>La Jolla, CA 92037</p>
+      <div class="hero__visual">
+        <div class="hero__image-frame">
+          <div class="hero__image-label">
+            <div class="hero__image-label-icon">&#9825;</div>
+            <div>
+              Your comfort is our priority
+              <small>Spa-like environment with ocean views</small>
+            </div>
           </div>
-          <div class="contact-item">
-            <h3>Phone</h3>
-            <p><a href="tel:6195550198">(619) 555-0198</a></p>
-          </div>
-          <div class="contact-item">
-            <h3>Hours</h3>
-            <p>Mon–Fri: 8:00 AM – 6:00 PM<br>Saturday: 9:00 AM – 2:00 PM<br>Sunday: Closed</p>
-          </div>
-          <a href="#" class="btn-primary" style="align-self: flex-start;">Get Directions</a>
         </div>
-        <div class="map-placeholder">[Interactive Google Map]</div>
       </div>
     </div>
   </section>
 
-  <section class="cta-section">
+  <!-- ========== TRUST BAR ========== -->
+  <div class="trust">
+    <div class="trust__inner">
+      <div class="trust__item">
+        <div class="trust__value">15<span>+</span></div>
+        <div class="trust__label">Years in La Jolla</div>
+      </div>
+      <div class="trust__item">
+        <div class="trust__value">5,000<span>+</span></div>
+        <div class="trust__label">Happy Patients</div>
+      </div>
+      <div class="trust__item">
+        <div class="trust__value">4.9 <span>&#9733;</span></div>
+        <div class="trust__label">Google Rating</div>
+      </div>
+      <div class="trust__item">
+        <div class="trust__value"><span>&#10003;</span></div>
+        <div class="trust__label">Insurance Accepted</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="section" id="services" style="padding-top: 120px;">
     <div class="container">
-      <h2>Ready for a New Dentist?</h2>
-      <p>New patients welcome. Book online or call — we'll take care of the rest.</p>
-      <a href="#" class="btn-primary">Book Your First Visit</a>
+      <div class="section__header">
+        <span class="section__eyebrow">Our Services</span>
+        <h2 class="section__title">Complete care,<br>one practice.</h2>
+        <p class="section__desc">From your child's first visit to advanced restorative work, we handle it all with the same attention to detail.</p>
+      </div>
+      <div class="services__grid">
+        <div class="service-card">
+          <div class="service-card__icon service-card__icon--teal">&#9879;</div>
+          <h3 class="service-card__title">General Dentistry</h3>
+          <p class="service-card__desc">Comprehensive exams, cleanings, fillings, and preventive care. The foundation of a healthy smile.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon service-card__icon--beige">&#10024;</div>
+          <h3 class="service-card__title">Cosmetic Dentistry</h3>
+          <p class="service-card__desc">Veneers, bonding, and complete smile makeovers. Look in the mirror and love what you see.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon service-card__icon--blue">&#9881;</div>
+          <h3 class="service-card__title">Dental Implants</h3>
+          <p class="service-card__desc">Single implants to full-arch restorations. Permanent solutions that feel completely natural.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon service-card__icon--teal">&#9786;</div>
+          <h3 class="service-card__title">Invisalign</h3>
+          <p class="service-card__desc">Clear aligner therapy for teens and adults. Straighter teeth without the wires.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon service-card__icon--beige">&#9788;</div>
+          <h3 class="service-card__title">Pediatric Care</h3>
+          <p class="service-card__desc">Gentle, kid-friendly dentistry in a space designed to make little ones feel safe.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon service-card__icon--blue">&#9889;</div>
+          <h3 class="service-card__title">Emergency Care</h3>
+          <p class="service-card__desc">Same-day appointments for toothaches, fractures, and urgent issues. We are here when you need us.</p>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- ========== TEAM ========== -->
+  <section class="section section--beige" id="team">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Our Team</span>
+        <h2 class="section__title">The doctors behind<br>your smile.</h2>
+        <p class="section__desc">Three experienced specialists who chose La Jolla because they love the community as much as they love their craft.</p>
+      </div>
+      <div class="team__grid">
+        <div class="team-card">
+          <div class="team-card__photo">
+            <div class="team-card__photo-inner"></div>
+          </div>
+          <h3 class="team-card__name">Dr. James Chen, DDS</h3>
+          <p class="team-card__title">General &amp; Cosmetic Dentistry</p>
+          <p class="team-card__bio">UCSD School of Dentistry. 18 years of experience and a genuine belief that every patient deserves to feel heard.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-card__photo">
+            <div class="team-card__photo-inner"></div>
+          </div>
+          <h3 class="team-card__name">Dr. Maria Santos, DMD</h3>
+          <p class="team-card__title">Orthodontics &amp; Invisalign</p>
+          <p class="team-card__bio">Board-certified orthodontist and Invisalign Diamond Provider. Transforms smiles and confidence every single day.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-card__photo">
+            <div class="team-card__photo-inner"></div>
+          </div>
+          <h3 class="team-card__name">Dr. Kevin Park, DDS</h3>
+          <p class="team-card__title">Implant &amp; Restorative Specialist</p>
+          <p class="team-card__bio">Fellowship-trained in implantology with over 2,000 implants placed. Focused on results that last a lifetime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== INSURANCE ========== -->
+  <section class="section section--soft" id="insurance">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Insurance</span>
+        <h2 class="section__title">We accept most<br>major plans.</h2>
+        <p class="section__desc">In-network with top PPO providers. No insurance? We offer transparent pricing and flexible payment options.</p>
+      </div>
+      <div class="insurance__grid">
+        <div class="insurance__badge">Delta Dental</div>
+        <div class="insurance__badge">Cigna</div>
+        <div class="insurance__badge">Aetna</div>
+        <div class="insurance__badge">MetLife</div>
+        <div class="insurance__badge">Guardian</div>
+        <div class="insurance__badge">United Healthcare</div>
+        <div class="insurance__badge">Anthem</div>
+        <div class="insurance__badge">Humana</div>
+      </div>
+      <p class="insurance__note">Don't see your plan? <a href="tel:8585550147">Call us to verify coverage</a></p>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Patient Stories</span>
+        <h2 class="section__title">Hear it from the<br>people who matter.</h2>
+        <p class="section__desc">Real words from real patients. No scripts, no edits.</p>
+      </div>
+      <div class="testimonials__grid">
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-card__quote">Dr. Chen is the best dentist I have ever had. The entire team is warm, professional, and never makes you feel rushed. I actually look forward to my appointments now.</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">L</div>
+            <div>
+              <div class="testimonial-card__name">Linda R.</div>
+              <div class="testimonial-card__source">Google Reviews</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-card__quote">Had a cracked tooth on a Saturday morning. They got me in within an hour, explained everything clearly, and had me fixed up before lunch. Absolutely incredible.</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">D</div>
+            <div>
+              <div class="testimonial-card__name">David M.</div>
+              <div class="testimonial-card__source">Yelp</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section" id="book">
+    <div class="container cta">
+      <div class="cta__inner">
+        <h2 class="cta__title">Ready for a dentist<br>who actually cares?</h2>
+        <p class="cta__desc">New patients welcome. Book online in 30 seconds or give us a call. We will handle the rest.</p>
+        <div class="cta__actions">
+          <a href="#" class="btn btn--cta-primary">Book Your First Visit</a>
+          <a href="tel:8585550147" class="btn btn--cta-outline">(858) 555-0147</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
   <footer class="footer">
-    <div class="footer-inner">
+    <div class="footer__inner">
       <div>
-        <div class="footer-logo">Pacific Dental<span>.</span></div>
-        <p>Modern, comfortable dental care in La Jolla. Serving San Diego families for over 15 years.</p>
+        <div class="footer__brand-name">Pacific Dental <em>Group</em></div>
+        <p class="footer__brand-desc">Modern dental care in La Jolla. Serving San Diego families with warmth and precision for over 15 years.</p>
       </div>
       <div>
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#">General Dentistry</a></li>
-          <li><a href="#">Cosmetic</a></li>
-          <li><a href="#">Implants</a></li>
-          <li><a href="#">Invisalign</a></li>
-          <li><a href="#">Emergency</a></li>
+        <h4 class="footer__heading">Services</h4>
+        <ul class="footer__list">
+          <li><a href="#services">General Dentistry</a></li>
+          <li><a href="#services">Cosmetic</a></li>
+          <li><a href="#services">Implants</a></li>
+          <li><a href="#services">Invisalign</a></li>
+          <li><a href="#services">Emergency</a></li>
         </ul>
       </div>
       <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="tel:6195550198">(619) 555-0198</a></li>
-          <li><a href="mailto:hello@pacificdental.com">hello@pacificdental.com</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Google Reviews</a></li>
+        <h4 class="footer__heading">Contact</h4>
+        <ul class="footer__list">
+          <li><a href="tel:8585550147">(858) 555-0147</a></li>
+          <li><a href="mailto:hello@pacificdentalgroup.com">hello@pacificdentalgroup.com</a></li>
+          <li>1250 Prospect St, Suite 300</li>
+          <li>La Jolla, CA 92037</li>
         </ul>
+      </div>
+      <div>
+        <h4 class="footer__heading">Hours</h4>
+        <div class="footer__hours-row">
+          <span class="footer__hours-day">Mon - Fri</span>
+          <span class="footer__hours-time">8am - 6pm</span>
+        </div>
+        <div class="footer__hours-row">
+          <span class="footer__hours-day">Saturday</span>
+          <span class="footer__hours-time">9am - 2pm</span>
+        </div>
+        <div class="footer__hours-row">
+          <span class="footer__hours-day">Sunday</span>
+          <span class="footer__hours-time">Closed</span>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Pacific Dental Group. All rights reserved. Built by <a href="https://skotte.co" style="color: #60A5FA;">Skotte</a></p>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Pacific Dental Group. All rights reserved.</span>
+      <span class="footer__credit">Built by <a href="https://skotte.co">Skotte</a></span>
     </div>
   </footer>
 

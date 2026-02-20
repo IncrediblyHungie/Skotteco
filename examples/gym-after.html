@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IRON ATHLETICS — Pacific Beach Gym | CrossFit, Boxing, Olympic Lifting</title>
+  <meta name="description" content="Iron Athletics is Pacific Beach's hardest-hitting gym. CrossFit, Olympic Lifting, Boxing, and Open Gym. No excuses. Just results.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0A0A0A;
+      --dark: #111111;
+      --card: #1A1A1A;
+      --card-hover: #222222;
+      --border: #2D2D2D;
+      --neon: #CCFF00;
+      --neon-dim: rgba(204, 255, 0, 0.15);
+      --neon-glow: rgba(204, 255, 0, 0.4);
+      --white: #F5F5F5;
+      --gray: #888888;
+      --red: #FF3333;
+      --font-body: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      --font-heading: Impact, 'Arial Black', 'Helvetica Neue', sans-serif;
+      --snap: 80ms ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ========================================
+       HEADER
+    ======================================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-inner {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--white);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+
+    .logo span {
+      color: var(--neon);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav a {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gray);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color var(--snap);
+    }
+
+    .nav a:hover {
+      color: var(--white);
+    }
+
+    .btn-nav {
+      display: inline-block;
+      padding: 10px 24px;
+      background: var(--neon);
+      color: var(--black);
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 900;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 0;
+      border: 2px solid var(--neon);
+      transition: background var(--snap), color var(--snap);
+    }
+
+    .btn-nav:hover {
+      background: transparent;
+      color: var(--neon);
+    }
+
+    /* Mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: transform var(--snap), opacity var(--snap);
+    }
+
+    /* ========================================
+       HERO
+    ======================================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--black);
+      overflow: hidden;
+      padding: 64px 24px 0;
+    }
+
+    /* Diagonal stripes background */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(204, 255, 0, 0.02) 40px,
+        rgba(204, 255, 0, 0.02) 42px
+      );
+      z-index: 1;
+    }
+
+    /* Geometric accent shapes */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: linear-gradient(135deg, rgba(204, 255, 0, 0.06) 0%, transparent 60%);
+      transform: rotate(45deg);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--neon);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 24px;
+      padding: 8px 20px;
+      border: 1px solid rgba(204, 255, 0, 0.3);
+      background: rgba(204, 255, 0, 0.05);
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(60px, 12vw, 140px);
+      font-weight: 900;
+      line-height: 0.9;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 32px;
+    }
+
+    .hero h1 .accent {
+      color: var(--neon);
+      display: block;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--gray);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--neon);
+      color: var(--black);
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 900;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 0;
+      border: 2px solid var(--neon);
+      transition: background var(--snap), color var(--snap);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--neon);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 16px 40px;
+      background: transparent;
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 900;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 0;
+      border: 2px solid var(--border);
+      transition: border-color var(--snap), color var(--snap);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .scroll-indicator span {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .scroll-indicator .line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--neon), transparent);
+      animation: scrollPulse 2s ease infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 1; transform: scaleY(1); }
+      50% { opacity: 0.4; transform: scaleY(0.6); }
+    }
+
+    /* ========================================
+       SECTION SHARED STYLES
+    ======================================== */
+    .section {
+      padding: 100px 24px;
+    }
+
+    .section-dark {
+      background: var(--dark);
+    }
+
+    .section-black {
+      background: var(--black);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 64px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--neon);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    .section-title .accent {
+      color: var(--neon);
+    }
+
+    /* ========================================
+       PROGRAMS
+    ======================================== */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .program-card {
+      background: var(--card);
+      padding: 40px 28px;
+      border: 1px solid transparent;
+      border-radius: 0;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--snap), background var(--snap);
+    }
+
+    .program-card:hover {
+      border-color: var(--neon);
+      background: var(--card-hover);
+    }
+
+    .program-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--neon);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--snap);
+    }
+
+    .program-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .program-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--neon-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      border-radius: 0;
+    }
+
+    .program-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--neon);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+    }
+
+    .program-card h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .program-card p {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .program-card .program-link {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--neon);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      transition: color var(--snap);
+    }
+
+    .program-card:hover .program-link {
+      color: var(--white);
+    }
+
+    /* ========================================
+       STATS
+    ======================================== */
+    .stats {
+      background: var(--black);
+      padding: 80px 24px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle geometric background */
+    .stats::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 49.5%, rgba(204, 255, 0, 0.03) 49.5%, rgba(204, 255, 0, 0.03) 50.5%, transparent 50.5%),
+        linear-gradient(0deg, transparent 49.5%, rgba(204, 255, 0, 0.03) 49.5%, rgba(204, 255, 0, 0.03) 50.5%, transparent 50.5%);
+      background-size: 120px 120px;
+    }
+
+    .stats-grid {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 20%;
+      height: 60%;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: clamp(48px, 7vw, 72px);
+      font-weight: 900;
+      color: var(--neon);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    /* ========================================
+       SCHEDULE PREVIEW
+    ======================================== */
+    .schedule-preview {
+      background: var(--dark);
+    }
+
+    .schedule-bar {
+      display: flex;
+      gap: 2px;
+      margin-top: 48px;
+    }
+
+    .schedule-slot {
+      flex: 1;
+      background: var(--card);
+      padding: 24px 16px;
+      text-align: center;
+      border: 1px solid transparent;
+      border-radius: 0;
+      transition: border-color var(--snap);
+    }
+
+    .schedule-slot:hover {
+      border-color: var(--neon);
+    }
+
+    .schedule-slot .time {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--neon);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .schedule-slot .class-name {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .schedule-slot .coach {
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    .schedule-note {
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    .schedule-note a {
+      color: var(--neon);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .schedule-note a:hover {
+      text-decoration: underline;
+    }
+
+    /* ========================================
+       PRICING
+    ======================================== */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      background: var(--card);
+      padding: 48px 32px;
+      border: 1px solid var(--border);
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: border-color var(--snap);
+    }
+
+    .price-card:hover {
+      border-color: var(--gray);
+    }
+
+    .price-card.featured {
+      border-color: var(--neon);
+      background: linear-gradient(180deg, rgba(204, 255, 0, 0.04) 0%, var(--card) 40%);
+    }
+
+    .price-card.featured:hover {
+      border-color: var(--neon);
+    }
+
+    .price-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--neon);
+      color: var(--black);
+      font-family: var(--font-heading);
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 6px 14px;
+      border-radius: 0;
+    }
+
+    .price-tier {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .price-desc {
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 24px;
+    }
+
+    .price-amount {
+      font-family: var(--font-heading);
+      font-size: 56px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .price-card.featured .price-amount {
+      color: var(--neon);
+    }
+
+    .price-amount span {
+      font-size: 18px;
+      color: var(--gray);
+      font-family: var(--font-body);
+      font-weight: 400;
+    }
+
+    .price-period {
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 32px;
+    }
+
+    .price-features {
+      list-style: none;
+      margin-bottom: 32px;
+      flex: 1;
+    }
+
+    .price-features li {
+      font-size: 14px;
+      color: var(--gray);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(45, 45, 45, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .price-features li::before {
+      content: '—';
+      color: var(--neon);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .price-card.featured .price-features li::before {
+      content: '✓';
+    }
+
+    .btn-price {
+      display: block;
+      text-align: center;
+      padding: 14px 24px;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border-radius: 0;
+      transition: background var(--snap), color var(--snap), border-color var(--snap);
+    }
+
+    .btn-price-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--border);
+    }
+
+    .btn-price-outline:hover {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    .btn-price-fill {
+      background: var(--neon);
+      color: var(--black);
+      border: 2px solid var(--neon);
+    }
+
+    .btn-price-fill:hover {
+      background: transparent;
+      color: var(--neon);
+    }
+
+    /* ========================================
+       ABOUT STRIP
+    ======================================== */
+    .about-strip {
+      background: var(--dark);
+      padding: 100px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-strip::before {
+      content: 'IRON';
+      position: absolute;
+      top: 50%;
+      right: -40px;
+      transform: translateY(-50%);
+      font-family: var(--font-heading);
+      font-size: 220px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.02);
+      letter-spacing: 0.05em;
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    .about-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-text .section-tag {
+      margin-bottom: 16px;
+    }
+
+    .about-text h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .about-text h2 .accent {
+      color: var(--neon);
+    }
+
+    .about-text p {
+      font-size: 16px;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .about-image {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--card) 0%, var(--black) 100%);
+      border: 1px solid var(--border);
+      border-radius: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Geometric placeholder pattern */
+    .about-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(45deg, rgba(204, 255, 0, 0.05) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(204, 255, 0, 0.05) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(204, 255, 0, 0.05) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(204, 255, 0, 0.05) 75%);
+      background-size: 40px 40px;
+    }
+
+    .about-image::after {
+      content: 'PHOTO';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 900;
+      color: rgba(204, 255, 0, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+    }
+
+    /* ========================================
+       CTA BAND
+    ======================================== */
+    .cta-band {
+      background: var(--black);
+      padding: 100px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 60px,
+        rgba(204, 255, 0, 0.015) 60px,
+        rgba(204, 255, 0, 0.015) 62px
+      );
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-band h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 8vw, 80px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.95;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .cta-band h2 .accent {
+      color: var(--neon);
+    }
+
+    .cta-band p {
+      font-size: 16px;
+      color: var(--gray);
+      margin-bottom: 40px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    .footer {
+      background: var(--dark);
+      padding: 64px 24px 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-brand .logo {
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col a {
+      font-size: 14px;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color var(--snap);
+    }
+
+    .footer-col a:hover {
+      color: var(--neon);
+    }
+
+    .footer-col p {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 48px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-socials a {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gray);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color var(--snap);
+    }
+
+    .footer-socials a:hover {
+      color: var(--neon);
+    }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+    @media (max-width: 1024px) {
+      .programs-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pricing-grid .price-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 50%;
+      }
+
+      .schedule-bar {
+        flex-wrap: wrap;
+      }
+
+      .schedule-slot {
+        flex: 1 1 calc(33.333% - 2px);
+        min-width: 140px;
+      }
+
+      .about-inner {
+        gap: 48px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        display: none;
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--black);
+        flex-direction: column;
+        padding: 32px 24px;
+        gap: 24px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: clamp(48px, 14vw, 80px);
+      }
+
+      .programs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+      }
+
+      .stat-item:nth-child(2)::after {
+        display: none;
+      }
+
+      .stat-item:nth-child(1),
+      .stat-item:nth-child(2) {
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 32px;
+        margin-bottom: 8px;
+      }
+
+      .stat-item:nth-child(3)::after,
+      .stat-item:nth-child(4)::after {
+        display: none;
+      }
+
+      .stat-item:nth-child(odd)::after {
+        display: block;
+      }
+
+      .stat-item:nth-child(3)::after {
+        display: block;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-grid .price-card:last-child {
+        max-width: 100%;
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-strip::before {
+        font-size: 120px;
+        right: -20px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .schedule-slot {
+        flex: 1 1 calc(50% - 2px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding-top: 80px;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        text-align: center;
+      }
+
+      .section {
+        padding: 72px 20px;
+      }
+
+      .stats {
+        padding: 60px 20px;
+      }
+
+      .stat-number {
+        font-size: 48px;
+      }
+
+      .price-card {
+        padding: 36px 24px;
+      }
+
+      .price-amount {
+        font-size: 44px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+
+      .schedule-slot {
+        flex: 1 1 100%;
+      }
+
+      .scroll-indicator {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="#" class="logo">IRON<span>.</span></a>
+      <nav class="nav" id="nav">
+        <a href="#programs">Programs</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#join" class="btn-nav">Start Today</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">Pacific Beach, San Diego</div>
+      <h1>
+        NO EXCUSES.
+        <span class="accent">JUST RESULTS.</span>
+      </h1>
+      <p>CrossFit. Olympic Lifting. Boxing. A training facility built for people who show up and put in the work. Every. Single. Day.</p>
+      <div class="hero-cta">
+        <a href="#pricing" class="btn-primary">Start Training</a>
+        <a href="#programs" class="btn-secondary">View Programs</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="line"></div>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAMS ===== -->
+  <section class="section section-dark" id="programs">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">What We Offer</div>
+        <h2 class="section-title">PICK YOUR <span class="accent">WEAPON</span></h2>
+      </div>
+      <div class="programs-grid">
+
+        <div class="program-card">
+          <div class="program-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 12h16M8 8v8M16 8v8M2 10v4M22 10v4"/></svg>
+          </div>
+          <h3>CrossFit</h3>
+          <p>High-intensity functional training. Coached classes that push you past what you thought was possible. All levels welcome.</p>
+          <a href="#" class="program-link">Learn More &rarr;</a>
+        </div>
+
+        <div class="program-card">
+          <div class="program-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2v8l4-4M12 10l-4-4M4 14l4 4 4-4 4 4 4-4"/></svg>
+          </div>
+          <h3>Olympic Lifting</h3>
+          <p>Snatch. Clean &amp; Jerk. Dedicated platforms, bumper plates, and coaches who've been on the platform themselves.</p>
+          <a href="#" class="program-link">Learn More &rarr;</a>
+        </div>
+
+        <div class="program-card">
+          <div class="program-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M8 12l-2 8h12l-2-8"/><path d="M10 16h4"/></svg>
+          </div>
+          <h3>Boxing</h3>
+          <p>Heavy bags, speed bags, technique drills, and sparring sessions. Hit hard. Move faster. Think sharper under pressure.</p>
+          <a href="#" class="program-link">Learn More &rarr;</a>
+        </div>
+
+        <div class="program-card">
+          <div class="program-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/><path d="M3 12h18M12 3v18"/></svg>
+          </div>
+          <h3>Open Gym</h3>
+          <p>Full access to the floor. Squat racks, dumbbells, cardio, turf. Your training, your way. No waiting, no nonsense.</p>
+          <a href="#" class="program-link">Learn More &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Members</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">6</div>
+        <div class="stat-label">Coaches</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">12</div>
+        <div class="stat-label">Classes / Day</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">2018</div>
+        <div class="stat-label">Established</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCHEDULE PREVIEW ===== -->
+  <section class="section section-dark" id="schedule">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Today's Classes</div>
+        <h2 class="section-title">THE <span class="accent">SCHEDULE</span></h2>
+      </div>
+      <div class="schedule-bar">
+        <div class="schedule-slot">
+          <div class="time">6:00 AM</div>
+          <div class="class-name">CrossFit</div>
+          <div class="coach">Coach Mike</div>
+        </div>
+        <div class="schedule-slot">
+          <div class="time">8:00 AM</div>
+          <div class="class-name">Olympic Lifting</div>
+          <div class="coach">Coach Sarah</div>
+        </div>
+        <div class="schedule-slot">
+          <div class="time">10:00 AM</div>
+          <div class="class-name">Boxing</div>
+          <div class="coach">Coach D</div>
+        </div>
+        <div class="schedule-slot">
+          <div class="time">12:00 PM</div>
+          <div class="class-name">CrossFit</div>
+          <div class="coach">Coach Mike</div>
+        </div>
+        <div class="schedule-slot">
+          <div class="time">5:00 PM</div>
+          <div class="class-name">CrossFit</div>
+          <div class="coach">Coach Jess</div>
+        </div>
+        <div class="schedule-slot">
+          <div class="time">7:00 PM</div>
+          <div class="class-name">Boxing</div>
+          <div class="coach">Coach D</div>
+        </div>
+      </div>
+      <p class="schedule-note">Open Gym is available 5AM–10PM daily. <a href="#">View full weekly schedule &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section class="section section-black" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">No Contracts. Cancel Anytime.</div>
+        <h2 class="section-title">SIMPLE <span class="accent">PRICING</span></h2>
+      </div>
+      <div class="pricing-grid">
+
+        <!-- Drop-In -->
+        <div class="price-card">
+          <div class="price-tier">Drop-In</div>
+          <div class="price-desc">Try us out. One class, no commitment.</div>
+          <div class="price-amount">$25</div>
+          <div class="price-period">per visit</div>
+          <ul class="price-features">
+            <li>Any single class</li>
+            <li>Full facility access that day</li>
+            <li>Towel &amp; water included</li>
+          </ul>
+          <a href="#join" class="btn-price btn-price-outline">Book a Drop-In</a>
+        </div>
+
+        <!-- Monthly — Featured -->
+        <div class="price-card featured">
+          <div class="price-badge">Most Popular</div>
+          <div class="price-tier">Monthly</div>
+          <div class="price-desc">Unlimited classes. Full access. All programs.</div>
+          <div class="price-amount">$149<span>/mo</span></div>
+          <div class="price-period">billed monthly</div>
+          <ul class="price-features">
+            <li>Unlimited coached classes</li>
+            <li>Open Gym access 5AM–10PM</li>
+            <li>InBody scan included</li>
+            <li>Members-only events</li>
+          </ul>
+          <a href="#join" class="btn-price btn-price-fill">Get Started</a>
+        </div>
+
+        <!-- Unlimited -->
+        <div class="price-card">
+          <div class="price-tier">Unlimited+</div>
+          <div class="price-desc">Everything in Monthly plus premium perks.</div>
+          <div class="price-amount">$199<span>/mo</span></div>
+          <div class="price-period">billed monthly</div>
+          <ul class="price-features">
+            <li>All Monthly benefits</li>
+            <li>1 personal training session / mo</li>
+            <li>Nutrition programming</li>
+            <li>Guest passes (2/month)</li>
+          </ul>
+          <a href="#join" class="btn-price btn-price-outline">Go Unlimited</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT STRIP ===== -->
+  <section class="about-strip">
+    <div class="about-inner">
+      <div class="about-text">
+        <div class="section-tag">Our Story</div>
+        <h2>BUILT BY ATHLETES, <span class="accent">FOR ATHLETES.</span></h2>
+        <p>Iron Athletics started in a 1,200 sq ft warehouse in 2018 with a barbell, some bumper plates, and a simple idea: build a gym where the training is hard, the coaching is real, and the community has your back.</p>
+        <p>Seven years later, we've grown into Pacific Beach's most serious training facility — but the energy hasn't changed. Walk through the door and you'll feel it.</p>
+      </div>
+      <div class="about-image"></div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BAND ===== -->
+  <section class="cta-band" id="join">
+    <div class="cta-content">
+      <h2>STOP THINKING.<br><span class="accent">START TRAINING.</span></h2>
+      <p>Your first class is on us. Walk in, sign the waiver, and get after it. No sales pitch. No contracts.</p>
+      <a href="#" class="btn-primary">Claim Your Free Class</a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">IRON<span>.</span></a>
+        <p>Pacific Beach's hardest-hitting gym. CrossFit, Olympic Lifting, Boxing, and Open Gym under one roof.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="#">CrossFit</a></li>
+          <li><a href="#">Olympic Lifting</a></li>
+          <li><a href="#">Boxing</a></li>
+          <li><a href="#">Open Gym</a></li>
+          <li><a href="#">Personal Training</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="#">Schedule</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Coaches</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <p>
+          1445 Garnet Ave<br>
+          Pacific Beach, CA 92109<br><br>
+          Mon–Fri: 5AM–10PM<br>
+          Sat–Sun: 7AM–8PM
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Iron Athletics. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== MINIMAL JS — Mobile Nav Toggle ===== -->
+  <script>
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.getElementById('nav').classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
