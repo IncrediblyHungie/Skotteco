@@ -28,7 +28,7 @@
   <style>
     /* === RESET === */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; scroll-behavior: smooth; }
+    html { font-size: 16px; }
     body {
       background: #1A1612;
       color: #F2EDE8;
@@ -137,10 +137,11 @@
       border-bottom: 1px solid var(--border);
     }
     .site-header .container {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      justify-content: space-between;
     }
+    .header-clock { text-align: right; min-width: 280px; }
     .header-cta {
       padding: 10px 22px;
       font-size: 0.875rem;
@@ -159,6 +160,19 @@
       white-space: nowrap;
     }
     @media (max-width: 768px) { .header-clock { display: none; } }
+    .hero-clock-mobile {
+      display: none;
+      position: absolute;
+      top: calc(60px + 14px);
+      left: 0; right: 0;
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(242, 237, 232, 0.7);
+      letter-spacing: 0.03em;
+      z-index: 1;
+      pointer-events: none;
+    }
+    @media (max-width: 768px) { .hero-clock-mobile { display: block; } }
 
     /* ======================== */
     /* HERO                     */
@@ -598,6 +612,9 @@
       padding: 2.5rem 0;
       border-top: 1px solid var(--border);
     }
+    @media (max-width: 768px) {
+      .site-footer { padding-bottom: calc(2.5rem + 70px); }
+    }
     .footer-inner {
       display: flex;
       align-items: center;
@@ -639,17 +656,22 @@
       .package-price { position: static; text-align: left; margin-top: 1rem; }
       .package-list { grid-template-columns: 1fr; }
       .header-cta { display: none; }
-      .mobile-cta-bar { display: block; opacity: 0; pointer-events: none; transition: opacity 300ms; }
+      .mobile-cta-bar { display: block; opacity: 0; pointer-events: none; transition: opacity 200ms; backdrop-filter: none; background: #1E1915; }
       .mobile-cta-bar.visible { opacity: 1; pointer-events: auto; }
-      body { padding-bottom: 70px; }
+      body { touch-action: pan-y; overscroll-behavior-y: none; }
+      .reveal, .reveal-d1, .reveal-d2, .reveal-d3 {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
     }
 
     @media (max-width: 480px) {
       .hero {
-        min-height: 100svh;
+        height: 100svh;
+        min-height: unset;
         padding: calc(60px + 2rem) 5% 4rem;
       }
-      .hero-eyebrow { font-size: 0.7rem; margin-bottom: 1.25rem; }
       .hero-headline { font-size: 2rem; margin-bottom: 1.5rem; }
       .hero-sub { display: none; }
       .hero-actions { display: none; }
@@ -658,15 +680,12 @@
       .trust-item {
         font-size: 0.78rem;
         color: #F2EDE8;
-        background: rgba(26, 22, 18, 0.65);
-        backdrop-filter: blur(6px);
+        background: rgba(26, 22, 18, 0.75);
         padding: 5px 10px;
         border-radius: 20px;
         border: 1px solid rgba(242, 237, 232, 0.2);
       }
       .process-grid { grid-template-columns: 1fr; }
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .hero-actions .btn { text-align: center; }
     }
   </style>
 </head>
@@ -694,6 +713,7 @@
         <source src="/video/hero.mp4" type="video/mp4">
       </video>
       <div class="hero-overlay"></div>
+      <span class="hero-clock-mobile" id="sdClockMobile"></span>
       <div class="hero-content">
 <h1 class="hero-headline reveal reveal-d1">
             New website.<br>
@@ -902,20 +922,7 @@
     </section>
 
     <!-- ======================== -->
-    <!-- 8. MID-PAGE CTA          -->
-    <!-- ======================== -->
-    <section class="section section-alt cta-section">
-      <div class="container">
-        <span class="label reveal">Ready to start?</span>
-        <h2 class="section-h2 reveal">Let us show you what we'd<br>build for your business.</h2>
-        <p class="cta-sub reveal">Book a free 30-minute call. We'll walk you through exactly what your new site would look like — and you'll get a custom proposal the same day.</p>
-        <a href="https://calendly.com/khrystynaskotte/discovery-call?background_color=1a1612&text_color=f2ede8&primary_color=c4a265"
-           target="_blank" rel="noopener" class="btn btn-lg reveal">Book Your Free Call →</a>
-      </div>
-    </section>
-
-    <!-- ======================== -->
-    <!-- 9. FINAL CTA             -->
+    <!-- 8. FINAL CTA             -->
     <!-- ======================== -->
     <section class="final-cta-section">
       <div class="container">
@@ -953,19 +960,25 @@
 
   <script>
     history.scrollRestoration = 'manual';
-    window.scrollTo(0, 0);
 
     // San Diego weather clock
     (function() {
       var clock = document.getElementById('sdClock');
-      if (!clock) return;
+      var clockMobile = document.getElementById('sdClockMobile');
       var weatherText = '';
       function updateTime() {
-        var time = new Date().toLocaleTimeString('en-US', {
+        var timeShort = new Date().toLocaleTimeString('en-US', {
+          timeZone: 'America/Los_Angeles',
+          hour: 'numeric', minute: '2-digit', hour12: true
+        });
+        var timeFull = new Date().toLocaleTimeString('en-US', {
           timeZone: 'America/Los_Angeles',
           hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true
         });
-        clock.textContent = time + (weatherText ? ' · ' + weatherText : '') + ' — San Diego';
+        var headerText = timeShort + (weatherText ? ' · ' + weatherText : '');
+        var mobileText = timeFull + (weatherText ? ' · ' + weatherText : '') + ' — San Diego';
+        if (clock) clock.textContent = headerText;
+        if (clockMobile) clockMobile.textContent = mobileText;
       }
       function fetchWeather() {
         fetch('https://api.open-meteo.com/v1/forecast?latitude=32.7157&longitude=-117.1611&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America/Los_Angeles')
