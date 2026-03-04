@@ -28,8 +28,8 @@ Converts cold-email traffic into discovery call bookings.
 # Local preview
 python -m http.server 8000
 
-# Deploy to Cloudflare Pages
-CLOUDFLARE_API_TOKEN=Kx1oHbAaS65zQg4cvAH3pf1KMRU8Z8bbJchaOjm2 npx wrangler pages deploy . --project-name=skotteco --commit-dirty=true
+# Deploy to Cloudflare Pages (from /tmp/skotteco-deploy)
+CLOUDFLARE_ACCOUNT_ID=5fd1871f533fe5afc25bdea65d2a9d4e CLOUDFLARE_API_TOKEN=Kx1oHbAaS65zQg4cvAH3pf1KMRU8Z8bbJchaOjm2 npx wrangler pages deploy /tmp/skotteco-deploy --project-name=skotteco --commit-dirty=true
 
 # Check file sizes
 wc -c css/*.css js/*.js

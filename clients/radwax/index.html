@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rad Wax Factory — Hive-Made Beeswax Wellness Products</title>
+  <meta name="description" content="Pure beeswax wellness products made by the hive. Lip balms, sun sticks, hydration sticks, and more. Zero chemicals, plastic-free packaging, reef-safe formulas.">
+  <link rel="canonical" href="https://radwaxfactory.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://radwaxfactory.com/">
+  <meta property="og:title" content="Rad Wax Factory — Hive-Made Beeswax Wellness Products">
+  <meta property="og:description" content="Pure beeswax wellness products made by the hive. Lip balms, sun sticks, hydration sticks, and more. Zero chemicals, plastic-free packaging, reef-safe formulas.">
+  <meta property="og:image" content="https://radwaxfactory.com/img/og-image.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- JSON-LD Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Rad Wax Factory",
+    "url": "https://radwaxfactory.com",
+    "logo": "https://radwaxfactory.com/img/logo.png",
+    "description": "Pure beeswax wellness products made by the hive. Zero chemicals, plastic-free packaging, reef-safe formulas.",
+    "sameAs": [
+      "https://www.instagram.com/radwaxfactory"
+    ]
+  }
+  </script>
+
+  <!-- JS -->
+  <script src="js/main.js" defer></script>
+  <script src="js/shopify.js" defer></script>
+</head>
+<body class="home">
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="topbar" id="topbar">
+    <div class="topbar-inner">
+      <span class="topbar-message active">Free shipping on orders over $50</span>
+      <span class="topbar-message">Pure beeswax. Zero chemicals. Hive-Made.</span>
+      <span class="topbar-message">Plastic-free packaging. Reef-safe formulas.</span>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="nav" id="nav">
+    <div class="nav-inner container">
+      <a href="/" class="logo">RAD WAX</a>
+      <div class="nav-links">
+        <a href="shop.html">Shop</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a href="wholesale.html">Wholesale</a>
+      </div>
+      <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== MOBILE MENU ===== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav>
+      <a href="shop.html" class="mobile-menu-link">Shop</a>
+      <a href="blog.html" class="mobile-menu-link">Blog</a>
+      <a href="contact.html" class="mobile-menu-link">Contact</a>
+      <a href="wholesale.html" class="mobile-menu-link">Wholesale</a>
+    </nav>
+  </div>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img class="hero-img" src="img/hero.jpg" alt="Rad Wax beeswax wellness products in warm sunlight">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content container">
+      <span class="hero-label">Hive-Made Wellness</span>
+      <h1 class="hero-headline">Pollinate<br>the Future.</h1>
+      <p class="hero-sub">Pure beeswax products crafted by nature, perfected by hand. Zero chemicals, zero plastic, zero compromise.</p>
+      <a href="shop.html" class="btn btn-primary btn-lg">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- ===== TRUST BAR ===== -->
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <div class="trust-item">
+          <span class="trust-number" data-count="2500" data-suffix="+">0+</span>
+          <span class="trust-label">Happy Customers</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">&#x1F41D;</span>
+          <span class="trust-label">100% Pure Beeswax</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">&#x1F30A;</span>
+          <span class="trust-label">Reef-Safe</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">&#x267B;&#xFE0F;</span>
+          <span class="trust-label">Plastic-Free Packaging</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURED PRODUCTS ===== -->
+  <section class="section reveal" id="products">
+    <div class="container">
+      <span class="section-label">Best Sellers</span>
+      <h2 class="section-title">The lineup.</h2>
+      <div class="product-carousel mt-8" id="productCarousel">
+
+        <!-- Product 1: Coconut Lip Balm -->
+        <div class="product-card" data-category="lip">
+          <div class="product-card-img">
+            <img src="img/product-lip-balm.jpg" alt="Coconut Lip Balm">
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <h3>Coconut Lip Balm</h3>
+            <ul class="product-card-benefits">
+              <li>Deep hydration for dry lips</li>
+              <li>Natural coconut + beeswax blend</li>
+            </ul>
+            <div class="product-card-price">$8.00</div>
+            <button class="btn btn-primary btn-sm btn-add-cart">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 2: Mineral Sun Stick -->
+        <div class="product-card" data-category="skin">
+          <div class="product-card-img">
+            <img src="img/product-sun-stick.jpg" alt="Mineral Sun Stick">
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <h3>Mineral Sun Stick</h3>
+            <ul class="product-card-benefits">
+              <li>Reef-safe SPF protection</li>
+              <li>Beeswax + zinc oxide formula</li>
+            </ul>
+            <div class="product-card-price">$14.00</div>
+            <button class="btn btn-primary btn-sm btn-add-cart">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 3: Hydration Stick -->
+        <div class="product-card" data-category="skin">
+          <div class="product-card-img">
+            <img src="img/product-hydration-stick.jpg" alt="Hydration Stick">
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <h3>Hydration Stick</h3>
+            <ul class="product-card-benefits">
+              <li>All-day moisture barrier</li>
+              <li>Compact, on-the-go format</li>
+            </ul>
+            <div class="product-card-price">$12.00</div>
+            <button class="btn btn-primary btn-sm btn-add-cart">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 4: Daily Routine Kit -->
+        <div class="product-card" data-category="bundle">
+          <div class="product-card-img">
+            <img src="img/product-routine-kit.jpg" alt="Daily Routine Kit">
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <h3>Daily Routine Kit</h3>
+            <ul class="product-card-benefits">
+              <li>Lip balm + sun stick + hydration stick</li>
+              <li>Save 18% vs. buying separately</li>
+            </ul>
+            <div class="product-card-price">
+              <span class="price-current">$28.00</span>
+              <span class="price-compare">$34.00</span>
+            </div>
+            <button class="btn btn-primary btn-sm btn-add-cart">Add to Cart</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== USE-CASE GRID ===== -->
+  <section class="section section-alt reveal" id="categories">
+    <div class="container">
+      <span class="section-label">Shop by Need</span>
+      <h2 class="section-title">Made for every moment.</h2>
+      <div class="usecase-grid mt-8 reveal-group">
+
+        <a href="/shop.html?category=lip" class="usecase-card">
+          <img src="img/usecase-lips.jpg" alt="For Your Lips">
+          <div class="usecase-card-content">
+            <h3>For Your Lips</h3>
+            <span>Shop Lip Care &rarr;</span>
+          </div>
+        </a>
+
+        <a href="/shop.html?category=skin" class="usecase-card">
+          <img src="img/usecase-skin.jpg" alt="For Your Skin">
+          <div class="usecase-card-content">
+            <h3>For Your Skin</h3>
+            <span>Shop Skincare &rarr;</span>
+          </div>
+        </a>
+
+        <a href="/shop.html?category=home" class="usecase-card">
+          <img src="img/usecase-home.jpg" alt="For Your Home">
+          <div class="usecase-card-content">
+            <h3>For Your Home</h3>
+            <span>Shop Home &rarr;</span>
+          </div>
+        </a>
+
+        <a href="/shop.html?category=hair" class="usecase-card">
+          <img src="img/usecase-hair.jpg" alt="For Your Hair">
+          <div class="usecase-card-content">
+            <h3>For Your Hair</h3>
+            <span>Shop Hair Care &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BRAND STORY ===== -->
+  <section class="section reveal" id="story">
+    <div class="container">
+      <div class="brand-story grid-2">
+        <div class="brand-story-img">
+          <img src="img/brand-story.jpg" alt="Beekeeper tending to hives in golden sunlight">
+        </div>
+        <div class="brand-story-text">
+          <span class="section-label">Our Process</span>
+          <h2 class="section-title">What is Hive-Made?</h2>
+          <p>Every Rad Wax product starts in the hive. Our beeswax is ethically sourced from small-scale beekeepers who prioritize the health of their colonies above all else.</p>
+          <p>We blend that pure beeswax with minimal, pronounceable ingredients — coconut oil, shea butter, zinc oxide, and botanical extracts. Nothing synthetic. Nothing you can't find in nature.</p>
+          <p>The result is a line of wellness products that actually work, feel incredible on your skin, and leave zero trace on the planet. That's what hive-made means to us.</p>
+          <a href="about.html" class="btn btn-outline mt-6">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="section section-dark reveal" id="testimonials">
+    <div class="container text-center">
+      <span class="section-label">What People Say</span>
+      <h2 class="section-title">Straight from the hive.</h2>
+      <div class="testimonial-carousel mt-8" id="testimonialCarousel">
+
+        <div class="testimonial-slide active">
+          <blockquote>"I've tried every lip balm on the market. This is the only one that actually lasts all day. My lips have never felt this good."</blockquote>
+          <cite>— Sarah M., Verified Buyer</cite>
+        </div>
+
+        <div class="testimonial-slide">
+          <blockquote>"The sun stick is a game-changer for surfing. Reef-safe, stays on in the water, and doesn't leave a white cast. Obsessed."</blockquote>
+          <cite>— Jake R., Verified Buyer</cite>
+        </div>
+
+        <div class="testimonial-slide">
+          <blockquote>"Finally, a brand that actually cares about what goes into their products. The whole routine kit replaced my entire medicine cabinet."</blockquote>
+          <cite>— Priya K., Verified Buyer</cite>
+        </div>
+
+      </div>
+      <div class="testimonial-dots" id="testimonialDots"></div>
+    </div>
+  </section>
+
+  <!-- ===== BEEKEEPER SECTION ===== -->
+  <section class="section reveal" id="beekeepers">
+    <div class="container">
+      <div class="beekeeper grid-2">
+        <div class="beekeeper-text">
+          <span class="section-label">Our Partners</span>
+          <h2 class="section-title">Meet the keepers.</h2>
+          <p>We work directly with independent beekeepers across the Pacific Northwest. Every jar of wax we use is traceable back to the apiary it came from.</p>
+          <p>Our partners practice sustainable, treatment-free beekeeping — no antibiotics, no pesticides, no shortcuts. Healthy bees make the best wax, and the best wax makes the best products. It's that simple.</p>
+        </div>
+        <div class="beekeeper-img">
+          <img src="img/beekeeper.jpg" alt="Local beekeeper inspecting a frame of honeycomb">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="section section-alt reveal" id="newsletter">
+    <div class="container text-center">
+      <h2 class="section-title">Stay in the hive.</h2>
+      <p>Get first access to new drops, beekeeper stories, and 10% off your first order.</p>
+      <form class="newsletter-form mt-6" id="newsletterForm">
+        <input type="email" placeholder="Your email address" required aria-label="Email address">
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Column 1: Brand -->
+        <div class="footer-col">
+          <a href="/" class="footer-logo">RAD WAX</a>
+          <p class="footer-tagline">Pure beeswax wellness. Hive-made, human-approved.</p>
+        </div>
+
+        <!-- Column 2: Shop -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Shop</h4>
+          <a href="/shop.html?category=lip">Lip Care</a>
+          <a href="/shop.html?category=skin">Skincare</a>
+          <a href="/shop.html?category=home">Home</a>
+          <a href="/shop.html?category=hair">Hair Care</a>
+        </div>
+
+        <!-- Column 3: Company -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Company</h4>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+          <a href="wholesale.html">Wholesale</a>
+        </div>
+
+        <!-- Column 4: Connect -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Connect</h4>
+          <a href="https://www.instagram.com/radwaxfactory" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+            Instagram
+          </a>
+          <a href="mailto:hello@radwaxfactory.com">hello@radwaxfactory.com</a>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Rad Wax Factory. All rights reserved.</p>
+        <div class="footer-payments">
+          <span>Visa</span>
+          <span>Mastercard</span>
+          <span>Amex</span>
+          <span>Apple Pay</span>
+          <span>Google Pay</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

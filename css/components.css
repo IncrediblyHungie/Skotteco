@@ -1308,8 +1308,10 @@
 
 .tier-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-6);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .tier-card {
@@ -1555,12 +1557,14 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 3 / 4;
+  max-width: 280px;
 }
 
 .team-member-photo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: top center;
 }
 
 .team-member-photo-placeholder {
