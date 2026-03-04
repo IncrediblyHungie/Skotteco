@@ -639,20 +639,31 @@
       .package-price { position: static; text-align: left; margin-top: 1rem; }
       .package-list { grid-template-columns: 1fr; }
       .header-cta { display: none; }
-      .mobile-cta-bar { display: block; }
+      .mobile-cta-bar { display: block; opacity: 0; pointer-events: none; transition: opacity 300ms; }
+      .mobile-cta-bar.visible { opacity: 1; pointer-events: auto; }
       body { padding-bottom: 70px; }
     }
 
     @media (max-width: 480px) {
       .hero {
-        min-height: 0;
-        padding: calc(60px + 2rem) 0 3rem;
+        min-height: 100svh;
+        padding: calc(60px + 2rem) 5% 4rem;
       }
       .hero-eyebrow { font-size: 0.7rem; margin-bottom: 1.25rem; }
-      .hero-headline { font-size: 2rem; margin-bottom: 1.25rem; }
-      .hero-sub { font-size: 0.9375rem; margin-bottom: 2rem; }
-      .trust-line { gap: 0.6rem; }
-      .trust-item { font-size: 0.78rem; }
+      .hero-headline { font-size: 2rem; margin-bottom: 1.5rem; }
+      .hero-sub { display: none; }
+      .hero-actions { display: none; }
+      .hero-eyebrow { display: none; }
+      .trust-line { gap: 0.5rem; flex-wrap: wrap; }
+      .trust-item {
+        font-size: 0.78rem;
+        color: #F2EDE8;
+        background: rgba(26, 22, 18, 0.65);
+        backdrop-filter: blur(6px);
+        padding: 5px 10px;
+        border-radius: 20px;
+        border: 1px solid rgba(242, 237, 232, 0.2);
+      }
       .process-grid { grid-template-columns: 1fr; }
       .hero-actions { flex-direction: column; align-items: stretch; }
       .hero-actions .btn { text-align: center; }
@@ -684,8 +695,7 @@
       </video>
       <div class="hero-overlay"></div>
       <div class="hero-content">
-          <div class="hero-eyebrow reveal">San Diego Web Design + Photography</div>
-          <h1 class="hero-headline reveal reveal-d1">
+<h1 class="hero-headline reveal reveal-d1">
             New website.<br>
             Real photography.<br>
             <em>5 business days.</em>
@@ -860,34 +870,6 @@
     </section>
 
     <!-- ======================== -->
-    <!-- 6. TEAM BIOS             -->
-    <!-- ======================== -->
-    <section class="section section-alt">
-      <div class="container">
-        <span class="label reveal">The team</span>
-        <h2 class="section-h2 reveal">Built by real people,<br>not an agency.</h2>
-        <div class="team-grid">
-          <div class="team-card reveal reveal-d1">
-            <div class="team-avatar-wrap">
-              <img src="/img/peter.png" alt="Peter — Developer & Strategist at Skotte" loading="lazy">
-            </div>
-            <h3 class="team-name">Peter</h3>
-            <span class="team-role">Developer &amp; Strategist</span>
-            <p class="team-bio">I build every Skotte website by hand. No WordPress, no templates, no page builders — just clean custom code that loads in under a second. Before Skotte, I scaled an e-commerce business past $1M in revenue. I bring that analytical mindset to every site I build: what converts, what ranks, what makes someone pick up the phone.</p>
-          </div>
-          <div class="team-card reveal reveal-d2">
-            <div class="team-avatar-wrap">
-              <img src="/img/khrystyna.png" alt="Khrystyna — Photographer at Skotte" loading="lazy">
-            </div>
-            <h3 class="team-name">Khrystyna</h3>
-            <span class="team-role">Photographer</span>
-            <p class="team-bio">I photograph every Skotte client's business in person. Real spaces, real people, real products — never stock photos. Originally from Ukraine, I bring a European editorial eye to commercial photography. Every image is shot to make your business look as good online as it does in person.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================== -->
     <!-- 7. PROCESS               -->
     <!-- ======================== -->
     <section class="section">
@@ -970,6 +952,9 @@
   </div>
 
   <script>
+    history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+
     // San Diego weather clock
     (function() {
       var clock = document.getElementById('sdClock');
@@ -1016,6 +1001,16 @@
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
     revealEls.forEach(el => observer.observe(el));
+
+    // Show sticky CTA after hero scrolls out of view
+    const mobileCta = document.querySelector('.mobile-cta-bar');
+    const heroSection = document.querySelector('.hero');
+    if (mobileCta && heroSection) {
+      const heroObserver = new IntersectionObserver((entries) => {
+        mobileCta.classList.toggle('visible', !entries[0].isIntersecting);
+      }, { threshold: 0 });
+      heroObserver.observe(heroSection);
+    }
 
     // Scale iframes to fit slider containers
     function scaleIframes() {
