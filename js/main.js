@@ -311,17 +311,25 @@
       }
     });
 
-    // iOS Safari ignores autoplay until video has data — trigger on canplay
+    // iOS Safari autoplay — try immediately, retry on events, retry on first touch
     var heroVideo = document.querySelector('.hero-video');
     if (heroVideo) {
       var tryPlay = function() {
-        heroVideo.play().catch(function() {});
+        if (heroVideo.paused) {
+          heroVideo.play().catch(function() {});
+        }
       };
-      if (heroVideo.readyState >= 3) {
-        tryPlay();
-      } else {
-        heroVideo.addEventListener('canplay', tryPlay, { once: true });
-      }
+      // Try immediately
+      tryPlay();
+      // Retry when enough data is loaded
+      heroVideo.addEventListener('canplay', tryPlay, { once: true });
+      heroVideo.addEventListener('loadeddata', tryPlay, { once: true });
+      // Retry when page becomes visible (tab switch, sleep/wake)
+      document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) tryPlay();
+      });
+      // Last resort: first user touch triggers play (iOS gesture requirement)
+      document.addEventListener('touchstart', tryPlay, { once: true });
     }
 
     handleScroll();
