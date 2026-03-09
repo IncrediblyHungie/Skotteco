@@ -311,6 +311,12 @@
       }
     });
 
+    // iOS Safari sometimes ignores autoplay — nudge it explicitly
+    var heroVideo = document.querySelector('.hero-video');
+    if (heroVideo) {
+      heroVideo.play().catch(function() {});
+    }
+
     handleScroll();
     initScrollAnimations();
     initCounterAnimations();
