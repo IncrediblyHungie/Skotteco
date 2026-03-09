@@ -311,10 +311,17 @@
       }
     });
 
-    // iOS Safari sometimes ignores autoplay — nudge it explicitly
+    // iOS Safari ignores autoplay until video has data — trigger on canplay
     var heroVideo = document.querySelector('.hero-video');
     if (heroVideo) {
-      heroVideo.play().catch(function() {});
+      var tryPlay = function() {
+        heroVideo.play().catch(function() {});
+      };
+      if (heroVideo.readyState >= 3) {
+        tryPlay();
+      } else {
+        heroVideo.addEventListener('canplay', tryPlay, { once: true });
+      }
     }
 
     handleScroll();
