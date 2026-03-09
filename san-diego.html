@@ -156,10 +156,12 @@
       border-bottom: 1px solid var(--border);
     }
     .site-header .container {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
     }
+    .site-logo { justify-self: start; }
+    .header-clock { justify-self: end; }
     .header-cta {
       padding: 10px 22px;
       font-size: 0.875rem;
@@ -1108,5 +1110,6 @@
     });
   </script>
 
+  <script src="/js/font-tester.js"></script>
 </body>
 </html>
