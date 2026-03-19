@@ -97,6 +97,24 @@
     requestAnimationFrame(step);
   }
 
+  // Prevent accidental navigation on work cards during scroll (iOS Safari)
+  function initWorkCards() {
+    document.querySelectorAll('.work-card').forEach(function(card) {
+      var startY = 0;
+      var moved = false;
+      card.addEventListener('touchstart', function(e) {
+        startY = e.touches[0].clientY;
+        moved = false;
+      }, { passive: true });
+      card.addEventListener('touchmove', function(e) {
+        if (Math.abs(e.touches[0].clientY - startY) > 8) moved = true;
+      }, { passive: true });
+      card.addEventListener('click', function(e) {
+        if (moved) e.preventDefault();
+      });
+    });
+  }
+
   // Before/After slider
   function initBeforeAfterSliders() {
     var sliders = document.querySelectorAll('.ba-slider');
@@ -335,6 +353,7 @@
     handleScroll();
     initScrollAnimations();
     initCounterAnimations();
+    initWorkCards();
     initBeforeAfterSliders();
     initFaqAccordion();
     initContactForm();
