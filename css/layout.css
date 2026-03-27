@@ -1,0 +1,136 @@
+/* === LAYOUT - DigitalWave === */
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--content-padding);
+  padding-right: var(--content-padding);
+}
+
+.container-sm {
+  max-width: var(--container-sm);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--content-padding);
+  padding-right: var(--content-padding);
+}
+
+.container-md {
+  max-width: var(--container-md);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--content-padding);
+  padding-right: var(--content-padding);
+}
+
+/* Section */
+.section {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+.section-sm {
+  padding-top: calc(var(--section-padding) * 0.6);
+  padding-bottom: calc(var(--section-padding) * 0.6);
+}
+
+.section-alt {
+  background-color: var(--color-surface);
+}
+
+/* Grids */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+/* Flexbox utilities */
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+
+/* Text utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-muted { color: var(--color-muted); }
+.text-gold { color: var(--color-gold); }
+.text-beige { color: var(--color-beige); }
+
+/* Margin utilities */
+.mt-2 { margin-top: var(--space-2); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-6 { margin-top: var(--space-6); }
+.mt-8 { margin-top: var(--space-8); }
+.mt-10 { margin-top: var(--space-10); }
+.mt-12 { margin-top: var(--space-12); }
+.mt-16 { margin-top: var(--space-16); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-6 { margin-bottom: var(--space-6); }
+.mb-8 { margin-bottom: var(--space-8); }
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-group > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+
+.reveal-group.visible > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-group.visible > *:nth-child(2) { transition-delay: 80ms; }
+.reveal-group.visible > *:nth-child(3) { transition-delay: 160ms; }
+.reveal-group.visible > *:nth-child(4) { transition-delay: 240ms; }
+.reveal-group.visible > *:nth-child(5) { transition-delay: 320ms; }
+.reveal-group.visible > *:nth-child(6) { transition-delay: 400ms; }
+
+.reveal-group.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gold divider */
+.gold-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--color-gold);
+  display: block;
+  margin: var(--space-4) 0;
+}
+
+.gold-rule-center {
+  margin-left: auto;
+  margin-right: auto;
+}
