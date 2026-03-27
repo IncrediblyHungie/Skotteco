@@ -40,6 +40,20 @@
   }
 }
 
+/* Founders section */
+.founders-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.founders-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
 /* Tablet: 768px and below */
 @media (max-width: 768px) {
   :root {
@@ -99,6 +113,23 @@
     grid-template-columns: 1fr;
     max-width: 360px;
     margin: 0 auto;
+  }
+
+  /* Founders section */
+  .founders-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .founders-photos {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .founders-photos > div:last-child {
+    margin-top: var(--space-6) !important;
   }
 
   /* Contact */
