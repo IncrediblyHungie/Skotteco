@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Discovery Call — DigitalWave Social Media Agency</title>
+  <meta name="description" content="Book a free discovery call with DigitalWave. Tell us about your business and we'll build a custom social media growth plan.">
+  <link rel="canonical" href="https://digitalwave.agency/contact.html">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="nav scrolled" id="nav">
+    <div class="nav-inner container">
+      <a href="./" class="nav-logo">Digital<span>Wave</span></a>
+      <nav class="nav-links">
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="work.html" class="nav-link">Work</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="btn btn-outline btn-sm" aria-current="page">Book a Call</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <a href="services.html" class="mobile-menu-link">Services</a>
+    <a href="work.html" class="mobile-menu-link">Work</a>
+    <a href="about.html" class="mobile-menu-link">About</a>
+    <a href="contact.html" class="mobile-menu-link">Book a Call</a>
+  </nav>
+
+  <main>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-content">
+          <span class="section-label">01 — Get Started</span>
+          <h1 class="page-hero-title">Book a Discovery Call</h1>
+          <p class="page-hero-desc">Tell us about your business. We'll review your social presence and build a custom plan — at no charge.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section">
+      <div class="container">
+        <div class="contact-grid reveal">
+
+          <!-- Form -->
+          <div>
+            <h2 style="font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: var(--space-2);">Tell Us About Your Business</h2>
+            <p class="text-muted" style="margin-bottom: var(--space-8); font-size: 1rem; line-height: 1.7;">Fill out the form below and we'll reach out within 1 business day to schedule your call.</p>
+
+            <!-- Replace YOUR_FORM_ID with your Formspree form ID -->
+            <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+
+              <div class="grid-2" style="gap: var(--space-4);">
+                <div class="form-group">
+                  <label for="name" class="form-label">Your Name *</label>
+                  <input type="text" id="name" name="name" class="form-input" placeholder="Jane Smith" required>
+                </div>
+                <div class="form-group">
+                  <label for="business" class="form-label">Business Name *</label>
+                  <input type="text" id="business" name="business_name" class="form-input" placeholder="Revive Wellness Studio" required>
+                </div>
+              </div>
+
+              <div class="grid-2" style="gap: var(--space-4);">
+                <div class="form-group">
+                  <label for="email" class="form-label">Email Address *</label>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="jane@example.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" class="form-input" placeholder="(619) 555-0100">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="budget" class="form-label">Monthly Marketing Budget *</label>
+                <select id="budget" name="monthly_budget" class="form-select" required>
+                  <option value="" disabled selected>Select your budget range</option>
+                  <option value="under-1000">Under $1,000/mo</option>
+                  <option value="1000-2000">$1,000 – $2,000/mo</option>
+                  <option value="2000-4000">$2,000 – $4,000/mo</option>
+                  <option value="4000-8000">$4,000 – $8,000/mo</option>
+                  <option value="8000+">$8,000+/mo</option>
+                  <option value="not-sure">Not sure yet</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label">Tell Us About Your Business</label>
+                <textarea id="message" name="message" class="form-textarea" placeholder="What do you sell, who's your target customer, and what's your main goal with social media?"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center;">
+                Submit &amp; Book a Call
+              </button>
+            </form>
+
+            <div class="form-success" id="formSuccess">
+              <p style="font-size: 1.1rem; color: var(--color-gold); font-weight: 600; margin-bottom: var(--space-2);">Message received!</p>
+              <p class="text-muted">We'll reach out within 1 business day to schedule your discovery call. Looking forward to it.</p>
+            </div>
+          </div>
+
+          <!-- Contact Info + Calendly -->
+          <div class="contact-info">
+
+            <!-- Calendly Embed Placeholder -->
+            <!-- TO ADD CALENDLY: Replace the div below with:
+              <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR_USERNAME/discovery-call" style="min-width:320px;height:630px;"></div>
+              <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            -->
+            <div class="calendly-placeholder" style="margin-bottom: var(--space-8);">
+              <p style="color: var(--color-gold); font-weight: 600; margin-bottom: var(--space-2);">📅 Prefer to book directly?</p>
+              <p>Add your Calendly link here so clients can self-schedule their discovery call.</p>
+              <a href="contact.html" class="btn btn-outline" style="margin-top: var(--space-4);">Book on Calendly</a>
+            </div>
+
+            <div class="contact-info-item">
+              <span class="contact-info-icon">📍</span>
+              <div>
+                <p class="contact-info-label">Location</p>
+                <p class="contact-info-text">San Diego, CA<br>Available via Zoom nationwide</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <span class="contact-info-icon">✉️</span>
+              <div>
+                <p class="contact-info-label">Email</p>
+                <p class="contact-info-text">
+                  <a href="mailto:hello@digitalwave.agency" style="color: var(--color-muted);">hello@digitalwave.agency</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <span class="contact-info-icon">⏱</span>
+              <div>
+                <p class="contact-info-label">Response Time</p>
+                <p class="contact-info-text">Within 1 business day</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <span class="contact-info-icon">🌊</span>
+              <div>
+                <p class="contact-info-label">Serving</p>
+                <p class="contact-info-text">San Diego, Los Angeles,<br>and brands across the U.S.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="./" class="footer-logo">Digital<span>Wave</span></a>
+          <p class="footer-tagline">Social media marketing that generates real results. San Diego, CA.</p>
+        </div>
+        <div>
+          <p class="footer-heading">Navigate</p>
+          <a href="./" class="footer-link">Home</a>
+          <a href="services.html" class="footer-link">Services</a>
+          <a href="work.html" class="footer-link">Work</a>
+          <a href="about.html" class="footer-link">About</a>
+          <a href="contact.html" class="footer-link">Contact</a>
+        </div>
+        <div>
+          <p class="footer-heading">Get in Touch</p>
+          <a href="contact.html" class="footer-link">Book a Discovery Call</a>
+          <a href="mailto:hello@digitalwave.agency" class="footer-link">hello@digitalwave.agency</a>
+          <p class="footer-link" style="cursor: default;">San Diego, CA</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 DigitalWave. All rights reserved.</p>
+        <p>San Diego Social Media Marketing Agency</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
