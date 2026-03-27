@@ -111,11 +111,13 @@
   background: rgba(0, 0, 0, 0.7);
   z-index: var(--z-overlay);
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--transition-base);
 }
 
 .mobile-overlay.active {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .mobile-menu {
@@ -330,7 +332,7 @@
 
 .hero-subhead {
   font-size: clamp(1rem, 1.4vw, 1.2rem);
-  color: var(--color-muted);
+  color: var(--color-text);
   max-width: 480px;
   line-height: 1.75;
   margin-bottom: var(--space-10);
