@@ -29,6 +29,10 @@
       'precision mediump float;',
       'uniform float u_time;',
       'uniform vec2  u_res;',
+      'uniform vec3  u_c0;',   // blob 0 color
+      'uniform vec3  u_c1;',   // blob 1 color
+      'uniform vec3  u_c2;',   // blob 2 color
+      'uniform vec3  u_base;', // background base color
 
       'void main(){',
       '  vec2 uv = gl_FragCoord.xy / u_res;',
@@ -46,16 +50,11 @@
       '  float w1 = exp(-dot(uvA-b1,uvA-b1) / (r*r));',
       '  float w2 = exp(-dot(uvA-b2,uvA-b2) / (r*r));',
 
-      '  vec3 cGold  = vec3(0.788, 0.659, 0.298);',
-      '  vec3 cTeal  = vec3(0.035, 0.220, 0.380);',
-      '  vec3 cAmber = vec3(0.420, 0.280, 0.040);',
-      '  vec3 base   = vec3(0.040, 0.082, 0.130);',
-
       '  float total = w0 + w1 + w2 + 0.001;',
-      '  vec3 col = (cGold*w0 + cTeal*w1 + cAmber*w2) / total;',
+      '  vec3 col = (u_c0*w0 + u_c1*w1 + u_c2*w2) / total;',
 
       '  float coverage = clamp(w0+w1+w2, 0.0, 1.0);',
-      '  col = mix(base, col, coverage * 0.88);',
+      '  col = mix(u_base, col, coverage * 0.88);',
 
       '  float vig = 1.0 - length((uv - 0.5) * 1.5);',
       '  col *= clamp(vig + 0.45, 0.0, 1.0);',
@@ -83,12 +82,48 @@
 
     var uTime = gl.getUniformLocation(prog, 'u_time');
     var uRes  = gl.getUniformLocation(prog, 'u_res');
+    var uC0   = gl.getUniformLocation(prog, 'u_c0');
+    var uC1   = gl.getUniformLocation(prog, 'u_c1');
+    var uC2   = gl.getUniformLocation(prog, 'u_c2');
+    var uBase = gl.getUniformLocation(prog, 'u_base');
+
+    // Default colors
+    var colors = {
+      c0:   [0.788, 0.659, 0.298],  // gold   #C9A84C
+      c1:   [0.035, 0.220, 0.380],  // teal   #093861
+      c2:   [0.420, 0.280, 0.040],  // amber  #6B4710
+      base: [0.040, 0.082, 0.130]   // navy   #0A1421
+    };
+
+    function hexToVec3(hex) {
+      hex = hex.replace('#','');
+      return [
+        parseInt(hex.substring(0,2),16)/255,
+        parseInt(hex.substring(2,4),16)/255,
+        parseInt(hex.substring(4,6),16)/255
+      ];
+    }
+
+    // Public API — called from testbar
+    window.__dwGradient = {
+      setColors: function(c0hex, c1hex, c2hex, basehex) {
+        if (c0hex)   colors.c0   = hexToVec3(c0hex);
+        if (c1hex)   colors.c1   = hexToVec3(c1hex);
+        if (c2hex)   colors.c2   = hexToVec3(c2hex);
+        if (basehex) colors.base = hexToVec3(basehex);
+      }
+    };
+
     var start = Date.now();
 
     function draw() {
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.uniform1f(uTime, (Date.now() - start) / 1000);
       gl.uniform2f(uRes, canvas.width, canvas.height);
+      gl.uniform3fv(uC0,   colors.c0);
+      gl.uniform3fv(uC1,   colors.c1);
+      gl.uniform3fv(uC2,   colors.c2);
+      gl.uniform3fv(uBase, colors.base);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
       requestAnimationFrame(draw);
     }

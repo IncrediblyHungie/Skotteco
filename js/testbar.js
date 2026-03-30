@@ -351,6 +351,35 @@
     updateActivePills('scheme', -1);
   }
 
+  /* =====================================================
+     GRADIENT COLOR HELPERS
+  ===================================================== */
+  var gradientColors = {
+    c0:   '#C9A84C',   // blob 0 — gold
+    c1:   '#093861',   // blob 1 — teal
+    c2:   '#6B4710',   // blob 2 — amber
+    base: '#0A1421'    // base — navy
+  };
+
+  function applyGradientColors() {
+    if (window.__dwGradient) {
+      window.__dwGradient.setColors(gradientColors.c0, gradientColors.c1, gradientColors.c2, gradientColors.base);
+    }
+    localStorage.setItem('tb-grad', JSON.stringify(gradientColors));
+    syncGradientPickers();
+  }
+
+  function syncGradientPickers() {
+    var fields = { 'tb-g0': 'c0', 'tb-g1': 'c1', 'tb-g2': 'c2', 'tb-gbase': 'base' };
+    Object.keys(fields).forEach(function(id) {
+      var key = fields[id];
+      var picker = document.getElementById(id + '-picker');
+      var hex    = document.getElementById(id + '-hex');
+      if (picker) picker.value = gradientColors[key];
+      if (hex)    hex.textContent = gradientColors[key];
+    });
+  }
+
   var CSS_PROPS = [
     '--color-bg','--color-surface','--color-text','--color-muted',
     '--color-gold','--accent','--accent-hover','--color-beige',
@@ -360,11 +389,14 @@
 
   function resetAll() {
     CSS_PROPS.forEach(function(p) { document.documentElement.style.removeProperty(p); });
-    ['tb-dfont','tb-bfont','tb-scheme','tb-custom-bg','tb-custom-accent'].forEach(function(k) { localStorage.removeItem(k); });
+    ['tb-dfont','tb-bfont','tb-scheme','tb-custom-bg','tb-custom-accent','tb-grad'].forEach(function(k) { localStorage.removeItem(k); });
     updateActivePills('dfont', 0);
     updateActivePills('bfont', 0);
     updateActivePills('scheme', 0);
     syncPickers('#0D1B2A', '#C9A84C');
+    // reset gradient to defaults
+    gradientColors = { c0: '#C9A84C', c1: '#093861', c2: '#6B4710', base: '#0A1421' };
+    applyGradientColors();
   }
 
   function syncPickers(bg, accent) {
@@ -454,6 +486,7 @@
     '<div id="tb-display-font-section" class="tb-section"></div>' +
     '<div id="tb-body-font-section" class="tb-section"></div>' +
     '<div id="tb-schemes-section" class="tb-section"></div>' +
+    '<div id="tb-gradient-section" class="tb-section"></div>' +
     '<div id="tb-custom-section" class="tb-section"></div>';
 
     document.body.appendChild(bar);
@@ -514,6 +547,43 @@
       '</div>';
     customSection.appendChild(customBox);
 
+    /* --- Gradient colors section --- */
+    var gradSection = bar.querySelector('#tb-gradient-section');
+    gradSection.innerHTML = '<div class="tb-section-head"><span class="tb-label">Hero Gradient</span><span class="tb-sublabel">3 blob colors + background base</span><span class="tb-divider"></span></div>';
+
+    var gradFields = [
+      { id: 'tb-g0',    label: 'Blob 1', key: 'c0'   },
+      { id: 'tb-g1',    label: 'Blob 2', key: 'c1'   },
+      { id: 'tb-g2',    label: 'Blob 3', key: 'c2'   },
+      { id: 'tb-gbase', label: 'Base',   key: 'base' }
+    ];
+    var gradBox = document.createElement('div');
+    gradBox.className = 'tb-custom-box';
+    gradFields.forEach(function(f) {
+      var group = document.createElement('div');
+      group.className = 'tb-custom-group';
+      group.innerHTML =
+        '<span class="tb-custom-group-label">' + f.label + '</span>' +
+        '<input type="color" id="' + f.id + '-picker" class="tb-color-input" value="' + gradientColors[f.key] + '">' +
+        '<span class="tb-color-hex" id="' + f.id + '-hex">' + gradientColors[f.key] + '</span>';
+      gradBox.appendChild(group);
+
+      // wire up after appended to DOM
+      (function(field) {
+        setTimeout(function() {
+          var picker = document.getElementById(field.id + '-picker');
+          var hexEl  = document.getElementById(field.id + '-hex');
+          if (!picker) return;
+          picker.addEventListener('input', function() {
+            gradientColors[field.key] = picker.value;
+            hexEl.textContent = picker.value;
+            applyGradientColors();
+          });
+        }, 0);
+      })(f);
+    });
+    gradSection.appendChild(gradBox);
+
     /* --- Events --- */
     bar.querySelector('#tb-reset-btn').addEventListener('click', resetAll);
 
@@ -573,10 +643,12 @@
     var si = localStorage.getItem('tb-scheme');
     var bg = localStorage.getItem('tb-custom-bg');
     var ac = localStorage.getItem('tb-custom-accent');
+    var gr = localStorage.getItem('tb-grad');
     if (di !== null) { var df = DISPLAY_FONTS[parseInt(di,10)]; if(df){loadFont(df);setVar('--font-display',df.family);} }
     if (bi !== null) { var bf = BODY_FONTS[parseInt(bi,10)];    if(bf){loadFont(bf);setVar('--font-body',bf.family);} }
     if (si !== null) { var s = SCHEMES[parseInt(si,10)]; if(s){ Object.keys(s.vars).forEach(function(k){setVar(k,s.vars[k]);}); } }
     else if (bg && ac) { applyCustom(bg, ac); }
+    if (gr) { try { var saved = JSON.parse(gr); Object.assign(gradientColors, saved); applyGradientColors(); } catch(e){} }
   });
 
 })();
