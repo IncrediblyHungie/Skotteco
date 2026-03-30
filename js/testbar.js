@@ -486,8 +486,8 @@
     '<div id="tb-display-font-section" class="tb-section"></div>' +
     '<div id="tb-body-font-section" class="tb-section"></div>' +
     '<div id="tb-schemes-section" class="tb-section"></div>' +
-    '<div id="tb-gradient-section" class="tb-section"></div>' +
-    '<div id="tb-custom-section" class="tb-section"></div>';
+    '<div id="tb-custom-section" class="tb-section"></div>' +
+    '<div id="tb-gradient-section" class="tb-section"></div>';
 
     document.body.appendChild(bar);
 
@@ -549,40 +549,35 @@
 
     /* --- Gradient colors section --- */
     var gradSection = bar.querySelector('#tb-gradient-section');
-    gradSection.innerHTML = '<div class="tb-section-head"><span class="tb-label">Hero Gradient</span><span class="tb-sublabel">3 blob colors + background base</span><span class="tb-divider"></span></div>';
+    gradSection.innerHTML =
+      '<div class="tb-section-head"><span class="tb-label">Hero Gradient</span><span class="tb-sublabel">3 blob colors + background base</span><span class="tb-divider"></span></div>' +
+      '<div class="tb-custom-box">' +
+        '<div class="tb-custom-group"><span class="tb-custom-group-label">Blob 1</span><input type="color" id="tb-g0-picker" class="tb-color-input" value="' + gradientColors.c0 + '"><span class="tb-color-hex" id="tb-g0-hex">' + gradientColors.c0 + '</span></div>' +
+        '<div class="tb-custom-group"><span class="tb-custom-group-label">Blob 2</span><input type="color" id="tb-g1-picker" class="tb-color-input" value="' + gradientColors.c1 + '"><span class="tb-color-hex" id="tb-g1-hex">' + gradientColors.c1 + '</span></div>' +
+        '<div class="tb-custom-group"><span class="tb-custom-group-label">Blob 3</span><input type="color" id="tb-g2-picker" class="tb-color-input" value="' + gradientColors.c2 + '"><span class="tb-color-hex" id="tb-g2-hex">' + gradientColors.c2 + '</span></div>' +
+        '<div class="tb-custom-group"><span class="tb-custom-group-label">Base</span><input type="color" id="tb-gbase-picker" class="tb-color-input" value="' + gradientColors.base + '"><span class="tb-color-hex" id="tb-gbase-hex">' + gradientColors.base + '</span></div>' +
+      '</div>';
 
-    var gradFields = [
-      { id: 'tb-g0',    label: 'Blob 1', key: 'c0'   },
-      { id: 'tb-g1',    label: 'Blob 2', key: 'c1'   },
-      { id: 'tb-g2',    label: 'Blob 3', key: 'c2'   },
-      { id: 'tb-gbase', label: 'Base',   key: 'base' }
-    ];
-    var gradBox = document.createElement('div');
-    gradBox.className = 'tb-custom-box';
-    gradFields.forEach(function(f) {
-      var group = document.createElement('div');
-      group.className = 'tb-custom-group';
-      group.innerHTML =
-        '<span class="tb-custom-group-label">' + f.label + '</span>' +
-        '<input type="color" id="' + f.id + '-picker" class="tb-color-input" value="' + gradientColors[f.key] + '">' +
-        '<span class="tb-color-hex" id="' + f.id + '-hex">' + gradientColors[f.key] + '</span>';
-      gradBox.appendChild(group);
-
-      // wire up after appended to DOM
-      (function(field) {
-        setTimeout(function() {
-          var picker = document.getElementById(field.id + '-picker');
-          var hexEl  = document.getElementById(field.id + '-hex');
-          if (!picker) return;
-          picker.addEventListener('input', function() {
-            gradientColors[field.key] = picker.value;
-            hexEl.textContent = picker.value;
-            applyGradientColors();
-          });
-        }, 0);
-      })(f);
+    gradSection.querySelector('#tb-g0-picker').addEventListener('input', function() {
+      gradientColors.c0 = this.value;
+      gradSection.querySelector('#tb-g0-hex').textContent = this.value;
+      applyGradientColors();
     });
-    gradSection.appendChild(gradBox);
+    gradSection.querySelector('#tb-g1-picker').addEventListener('input', function() {
+      gradientColors.c1 = this.value;
+      gradSection.querySelector('#tb-g1-hex').textContent = this.value;
+      applyGradientColors();
+    });
+    gradSection.querySelector('#tb-g2-picker').addEventListener('input', function() {
+      gradientColors.c2 = this.value;
+      gradSection.querySelector('#tb-g2-hex').textContent = this.value;
+      applyGradientColors();
+    });
+    gradSection.querySelector('#tb-gbase-picker').addEventListener('input', function() {
+      gradientColors.base = this.value;
+      gradSection.querySelector('#tb-gbase-hex').textContent = this.value;
+      applyGradientColors();
+    });
 
     /* --- Events --- */
     bar.querySelector('#tb-reset-btn').addEventListener('click', resetAll);
